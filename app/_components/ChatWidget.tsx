@@ -166,16 +166,16 @@ export default function ChatWidget() {
         }`}
       >
         <div
-          className="rounded-[4px] overflow-hidden flex flex-col shadow-[0_24px_60px_rgba(8,46,71,0.25)]"
+          className="rounded-2xl overflow-hidden flex flex-col shadow-[0_24px_60px_rgba(8,46,71,0.25)]"
           style={{
             background: "#FFFFFF",
             border: "1px solid var(--shimmeur-stone)",
-            maxHeight: "min(70vh, 540px)",
+            maxHeight: "min(80vh, 620px)",
           }}
         >
           {/* Header */}
           <div
-            className="px-6 py-5"
+            className="px-5 py-3"
             style={{
               background: "var(--shimmeur-navy)",
               color: "#FFFFFF",
@@ -205,11 +205,11 @@ export default function ChatWidget() {
                 </svg>
               </span>
               <div>
-                <p className="font-display text-[1.05rem] leading-tight">
+                <p className="font-display text-[0.95rem] leading-tight">
                   Shimmeur Assistant
                 </p>
                 <p
-                  className="text-[0.72rem] tracking-[0.1em] uppercase"
+                  className="text-[0.65rem] tracking-[0.1em] uppercase"
                   style={{ color: "var(--shimmeur-sage-light)" }}
                 >
                   A quiet first conversation
@@ -231,7 +231,7 @@ export default function ChatWidget() {
                 className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className="max-w-[78%] rounded-[12px] px-4 py-2.5 text-[0.88rem] leading-[1.55]"
+                  className="max-w-[85%] rounded-[16px] px-3.5 py-2.5 text-[0.75rem] leading-[1.55] shadow-sm"
                   style={
                     m.role === "user"
                       ? {
@@ -249,7 +249,7 @@ export default function ChatWidget() {
                 >
                   <span dangerouslySetInnerHTML={{ __html: m.text }} />
                   <div
-                    className="text-[0.65rem] mt-1 tracking-[0.06em] uppercase"
+                    className="text-[0.6rem] mt-0.5 tracking-[0.06em] uppercase"
                     style={{
                       color:
                         m.role === "user"
@@ -289,18 +289,18 @@ export default function ChatWidget() {
             {messages.length <= 2 && (
               <div className="pt-2">
                 <div
-                  className="text-[0.68rem] tracking-[0.14em] uppercase mb-2.5"
+                  className="text-[0.6rem] tracking-[0.14em] uppercase mb-2"
                   style={{ color: "var(--shimmeur-sage)" }}
                 >
                   Suggested
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {QUICK_PROMPTS.map((prompt) => (
                     <button
                       key={prompt}
                       type="button"
                       onClick={() => send(prompt)}
-                      className="text-[0.78rem] px-3.5 py-2 rounded-full transition-colors"
+                      className="text-[0.68rem] px-3 py-1.5 rounded-full transition-all hover:-translate-y-[1px] shadow-sm"
                       style={{
                         background: "#FFFFFF",
                         border: "1px solid var(--shimmeur-stone)",
@@ -322,51 +322,53 @@ export default function ChatWidget() {
               e.preventDefault();
               send(input);
             }}
-            className="px-4 py-3 flex items-center gap-2"
+            className="px-4 py-3"
             style={{
               borderTop: "1px solid var(--shimmeur-stone)",
               background: "#FFFFFF",
             }}
           >
-            <label htmlFor="shimmeur-chat-input" className="sr-only">
-              Message
-            </label>
-            <input
-              id="shimmeur-chat-input"
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type a message…"
-              className="flex-1 text-[0.88rem] py-3 px-4 rounded-full outline-none"
-              style={{
-                background: "var(--shimmeur-cream)",
-                border: "1px solid var(--shimmeur-stone)",
-                color: "var(--shimmeur-charcoal)",
-              }}
-            />
-            <button
-              type="submit"
-              aria-label="Send message"
-              className="h-[44px] w-[44px] rounded-full flex items-center justify-center"
-              style={{
-                background: "var(--shimmeur-navy)",
-                color: "#FFFFFF",
-              }}
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+            <div className="relative flex items-center">
+              <label htmlFor="shimmeur-chat-input" className="sr-only">
+                Message
+              </label>
+              <input
+                id="shimmeur-chat-input"
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type a message…"
+                className="w-full text-[0.75rem] py-2 pl-4 pr-12 rounded-full outline-none transition-all focus:ring-2 focus:ring-[var(--shimmeur-sage)]"
+                style={{
+                  background: "var(--shimmeur-cream)",
+                  border: "1px solid var(--shimmeur-stone)",
+                  color: "var(--shimmeur-charcoal)",
+                }}
+              />
+              <button
+                type="submit"
+                aria-label="Send message"
+                className="absolute right-1.5 h-[30px] w-[30px] rounded-full flex items-center justify-center transition-transform hover:scale-105"
+                style={{
+                  background: "var(--shimmeur-navy)",
+                  color: "#FFFFFF",
+                }}
               >
-                <path d="M5 12l14-7-5 7 5 7-14-7z" />
-              </svg>
-            </button>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                </svg>
+              </button>
+            </div>
           </form>
         </div>
       </div>

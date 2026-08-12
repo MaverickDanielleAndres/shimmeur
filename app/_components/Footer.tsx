@@ -15,7 +15,7 @@ export default function Footer() {
       className="text-shimmeur-white"
       style={{ background: "var(--shimmeur-navy-deep)", color: "#FFFFFF" }}
     >
-      <div className="shimmeur-container py-20 md:py-24">
+      <div className="shimmeur-container pt-20 pb-8 md:pt-24 md:pb-10">
         <div
           className="grid lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10 lg:gap-16 pb-14"
           style={{ borderBottom: "1px solid rgba(255,255,255,0.12)" }}
@@ -110,19 +110,59 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <div
-              className="font-medium tracking-[0.18em] uppercase text-[0.68rem] mb-5"
-              style={{ color: "rgba(255,255,255,0.5)" }}
-            >
-              Principles
+          <div className="flex flex-col gap-10">
+            <div>
+              <div
+                className="font-medium tracking-[0.18em] uppercase text-[0.68rem] mb-5"
+                style={{ color: "rgba(255,255,255,0.5)" }}
+              >
+                Principles
+              </div>
+              <p
+                className="font-display italic text-[0.95rem] leading-[1.7]"
+                style={{ color: "var(--shimmeur-sage-light)" }}
+              >
+                Beauty&nbsp;&nbsp;·&nbsp;&nbsp;Passion&nbsp;&nbsp;·&nbsp;&nbsp;Connection
+              </p>
             </div>
-            <p
-              className="font-display italic text-[0.95rem] leading-[1.7]"
-              style={{ color: "var(--shimmeur-sage-light)" }}
-            >
-              Beauty&nbsp;&nbsp;·&nbsp;&nbsp;Passion&nbsp;&nbsp;·&nbsp;&nbsp;Connection
-            </p>
+
+            <div>
+              <div
+                className="font-medium tracking-[0.18em] uppercase text-[0.68rem] mb-5"
+                style={{ color: "rgba(255,255,255,0.5)" }}
+              >
+                Socials
+              </div>
+              <ul className="flex flex-col gap-3 text-[0.9rem]">
+                <li>
+                  <a
+                    href="#"
+                    className="link-underline"
+                    style={{ color: "rgba(255,255,255,0.78)" }}
+                  >
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="link-underline"
+                    style={{ color: "rgba(255,255,255,0.78)" }}
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="link-underline"
+                    style={{ color: "rgba(255,255,255,0.78)" }}
+                  >
+                    Pinterest
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

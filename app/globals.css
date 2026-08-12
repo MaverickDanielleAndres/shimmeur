@@ -40,6 +40,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-color: var(--shimmeur-sage-light) var(--shimmeur-cream);
 }
 
 body {
@@ -64,6 +66,28 @@ h5 {
 ::selection {
   background: var(--shimmeur-sage-light);
   color: var(--shimmeur-navy-deep);
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+============================================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--shimmeur-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--shimmeur-sage-light);
+  border-radius: 10px;
+  border: 2px solid var(--shimmeur-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--shimmeur-sage);
 }
 
 /* ============================================================
