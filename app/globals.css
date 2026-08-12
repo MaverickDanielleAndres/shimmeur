@@ -1,26 +1,384 @@
 @import "tailwindcss";
 
+/* ============================================================
+   SHIMMEUR BRAND TOKENS
+   Source: /docs/Shimmeur_Brand_Guidelines.html + SOURCE_OF_TRUTH.md
+============================================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --shimmeur-navy: #0C4160;
+  --shimmeur-navy-deep: #082E47;
+  --shimmeur-sage: #5D7772;
+  --shimmeur-sage-light: #95A58D;
+  --shimmeur-stone: #DAD9D6;
+  --shimmeur-cream: #F7F4EF;
+  --shimmeur-white: #FFFFFF;
+  --shimmeur-charcoal: #1A1A1A;
+  --shimmeur-mid: #4A4A4A;
+
+  /* Type stacks */
+  --font-display: "Playfair Display", "Times New Roman", Georgia, serif;
+  --font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================================
+   TAILWIND v4 THEME — direct values so utilities are generated
+============================================================ */
+@theme {
+  --color-shimmeur-navy: #0C4160;
+  --color-shimmeur-navy-deep: #082E47;
+  --color-shimmeur-sage: #5D7772;
+  --color-shimmeur-sage-light: #95A58D;
+  --color-shimmeur-stone: #DAD9D6;
+  --color-shimmeur-cream: #F7F4EF;
+  --color-shimmeur-white: #FFFFFF;
+  --color-shimmeur-charcoal: #1A1A1A;
+  --color-shimmeur-mid: #4A4A4A;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--shimmeur-cream);
+  color: var(--shimmeur-charcoal);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  font-feature-settings: "kern", "liga", "calt";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  color: var(--shimmeur-navy);
+}
+
+::selection {
+  background: var(--shimmeur-sage-light);
+  color: var(--shimmeur-navy-deep);
+}
+
+/* ============================================================
+   LAYOUT PRIMITIVES
+============================================================ */
+.shimmeur-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+@media (min-width: 640px) {
+  .shimmeur-container {
+    padding-inline: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .shimmeur-container {
+    padding-inline: 48px;
+  }
+}
+
+/* ============================================================
+   SECTION RHYTHM
+============================================================ */
+.section-pad {
+  padding-block: 72px;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-block: 96px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-pad {
+    padding-block: 120px;
+  }
+}
+
+/* ============================================================
+   HERO COMPOSITION
+============================================================ */
+.hero-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 75% 35%, rgba(149, 165, 141, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 15% 85%, rgba(8, 46, 71, 0.55) 0%, transparent 60%),
+    var(--shimmeur-navy);
+  color: var(--shimmeur-white);
+}
+
+/* ============================================================
+   SCROLL FADE-IN
+============================================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================================
+   NAV SCROLL STATE
+============================================================ */
+.nav {
+  transition: background-color 0.4s ease, box-shadow 0.4s ease,
+    padding-block 0.4s ease, border-color 0.4s ease;
+}
+
+.nav.scrolled {
+  background-color: rgba(247, 244, 239, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: rgba(12, 65, 96, 0.08);
+}
+
+/* ============================================================
+   UNDERLINE LINK ANIMATION
+============================================================ */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.btn-primary {
+  background-color: var(--shimmeur-white);
+  color: var(--shimmeur-navy);
+  border-color: var(--shimmeur-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--shimmeur-stone);
+  border-color: var(--shimmeur-stone);
+  transform: translateY(-1px);
+}
+
+.btn-navy {
+  background-color: var(--shimmeur-navy);
+  color: var(--shimmeur-white);
+  border-color: var(--shimmeur-navy);
+}
+
+.btn-navy:hover {
+  background-color: var(--shimmeur-navy-deep);
+  border-color: var(--shimmeur-navy-deep);
+  transform: translateY(-1px);
+}
+
+.btn-ghost-light {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-ghost-light:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.85);
+  color: var(--shimmeur-white);
+}
+
+.btn-ghost-dark {
+  background-color: transparent;
+  color: var(--shimmeur-navy);
+  border-color: var(--shimmeur-stone);
+}
+
+.btn-ghost-dark:hover {
+  background-color: var(--shimmeur-stone);
+  border-color: var(--shimmeur-stone);
+}
+
+/* ============================================================
+   EYEBROW — small uppercase tracker label
+============================================================ */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--shimmeur-sage);
+  margin-bottom: 18px;
+}
+
+.eyebrow-light {
+  color: var(--shimmeur-sage-light);
+}
+
+/* ============================================================
+   FINE DIVIDER
+============================================================ */
+.divider {
+  border: 0;
+  border-top: 1px solid var(--shimmeur-stone);
+}
+
+/* ============================================================
+   TEXT COLOUR HELPERS — explicit brand-colour text
+   Use when Tailwind utility order might lose to dark backgrounds
+============================================================ */
+.text-shimmeur-cream { color: var(--shimmeur-cream); }
+.text-shimmeur-navy { color: var(--shimmeur-navy); }
+.text-shimmeur-navy-deep { color: var(--shimmeur-navy-deep); }
+.text-shimmeur-sage { color: var(--shimmeur-sage); }
+.text-shimmeur-sage-light { color: var(--shimmeur-sage-light); }
+.text-shimmeur-charcoal { color: var(--shimmeur-charcoal); }
+.text-shimmeur-mid { color: var(--shimmeur-mid); }
+.text-shimmeur-white { color: var(--shimmeur-white); }
+.text-shimmeur-stone { color: var(--shimmeur-stone); }
+
+.bg-shimmeur-cream { background-color: var(--shimmeur-cream); }
+.bg-shimmeur-navy { background-color: var(--shimmeur-navy); }
+.bg-shimmeur-navy-deep { background-color: var(--shimmeur-navy-deep); }
+.bg-shimmeur-sage { background-color: var(--shimmeur-sage); }
+.bg-shimmeur-white { background-color: var(--shimmeur-white); }
+.bg-shimmeur-stone { background-color: var(--shimmeur-stone); }
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   FOCUS STATE
+============================================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--shimmeur-sage-light);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   WHO-WE-HELP CARD HOVER
+============================================================ */
+.shimmeur-who-card {
+  border-top: 3px solid transparent;
+  transition: border-top-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.shimmeur-who-card:hover {
+  border-top-color: var(--shimmeur-sage);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(12, 65, 96, 0.1);
+}
+
+/* ============================================================
+   CHAT WIDGET PULSE
+============================================================ */
+@keyframes shimmeur-chat-pulse {
+  0%, 100% {
+    box-shadow: 0 12px 32px rgba(12, 65, 96, 0.35),
+      0 0 0 0 rgba(149, 165, 141, 0.55);
+  }
+  50% {
+    box-shadow: 0 12px 32px rgba(12, 65, 96, 0.35),
+      0 0 0 14px rgba(149, 165, 141, 0);
+  }
+}
+
+.shimmeur-chat-pulse {
+  animation: shimmeur-chat-pulse 2.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmeur-chat-pulse {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   COOKIE BANNER SLIDE-UP
+============================================================ */
+@keyframes shimmeur-cookie-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.shimmeur-cookie-enter {
+  animation: shimmeur-cookie-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmeur-cookie-enter { animation: none; }
 }
