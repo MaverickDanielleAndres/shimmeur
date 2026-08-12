@@ -113,7 +113,7 @@ export default function OurWork() {
     <>
       <section
         id="before-after"
-        className="section-pad pb-0 relative overflow-hidden"
+        className="section-pad !pb-0 relative overflow-hidden"
         style={{ background: "var(--shimmeur-cream)" }}
       >
         
@@ -231,11 +231,11 @@ export default function OurWork() {
 
       <section
         id="our-work"
-        className="section-pad pt-0"
+        className="section-pad !pt-0"
         style={{ background: "var(--shimmeur-cream)" }}
       >
         <div className="shimmeur-container">
-          <div className="flex flex-col gap-24 lg:gap-32 mt-4 md:mt-0">
+          <div className="flex flex-col gap-24 lg:gap-32 mt-16 lg:mt-24">
             {DETAILED_PROJECTS.map((project, i) => (
               <FadeIn
                 key={project.title}
