@@ -46,7 +46,7 @@ export default function Opportunity() {
   return (
     <section
       id="opportunity"
-      className="section-pad relative overflow-hidden"
+      className="section-pad relative overflow-clip"
       style={{ background: "var(--shimmeur-cream)" }}
     >
       {/* Thin animated accent line at top removed per request */}
