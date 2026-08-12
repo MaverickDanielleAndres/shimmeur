@@ -16,12 +16,26 @@ export default function About() {
   return (
     <section
       id="about"
-      className="section-pad"
+      className="section-pad relative overflow-hidden"
       style={{ background: "var(--shimmeur-sage)", color: "#FFFFFF" }}
     >
-      <div className="shimmeur-container">
-        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-20 items-center">
-          <FadeIn>
+      
+      {/* Decorative S-mark Watermark */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-[10%] -bottom-[10%] opacity-[0.03] z-0 hidden md:block"
+      >
+        <img
+          src="/img/shimmeur-smark.png"
+          alt=""
+          width={800}
+          height={800}
+        />
+      </div>
+
+      <div className="shimmeur-container relative z-10">
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-20 items-center lg:items-start">
+          <FadeIn className="lg:sticky lg:top-24">
             <div
               className="relative aspect-[3/4] max-w-[440px] mx-auto lg:mx-0 overflow-hidden rounded-[4px] flex items-end justify-center"
               style={{

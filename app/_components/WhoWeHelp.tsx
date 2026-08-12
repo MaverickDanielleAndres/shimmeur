@@ -22,12 +22,12 @@ const SITUATIONS = [
 const ICONS = [
   <svg
     key="home"
-    width="22"
-    height="22"
+    width="36"
+    height="36"
     viewBox="0 0 48 48"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.5"
+    strokeWidth="2.5"
     aria-hidden="true"
   >
     <rect x="8" y="20" width="32" height="22" rx="1" />
@@ -36,12 +36,12 @@ const ICONS = [
   </svg>,
   <svg
     key="people"
-    width="22"
-    height="22"
+    width="36"
+    height="36"
     viewBox="0 0 48 48"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.5"
+    strokeWidth="2.5"
     aria-hidden="true"
   >
     <circle cx="16" cy="18" r="7" />
@@ -52,12 +52,12 @@ const ICONS = [
   </svg>,
   <svg
     key="downsize"
-    width="22"
-    height="22"
+    width="36"
+    height="36"
     viewBox="0 0 48 48"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.5"
+    strokeWidth="2.5"
     aria-hidden="true"
   >
     <path d="M8 36L24 12L40 36H8Z" strokeLinejoin="round" />
@@ -66,12 +66,12 @@ const ICONS = [
   </svg>,
   <svg
     key="rental"
-    width="22"
-    height="22"
+    width="36"
+    height="36"
     viewBox="0 0 48 48"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.5"
+    strokeWidth="2.5"
     aria-hidden="true"
   >
     <rect x="8" y="16" width="32" height="26" rx="1" />
@@ -85,10 +85,24 @@ export default function WhoWeHelp() {
   return (
     <section
       id="who-we-help"
-      className="section-pad"
+      className="section-pad relative overflow-hidden"
       style={{ background: "var(--shimmeur-white)" }}
     >
-      <div className="shimmeur-container">
+      
+      {/* Decorative S-mark Watermark */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-[10%] -bottom-[10%] opacity-[0.03] z-0 hidden md:block"
+      >
+        <img
+          src="/img/shimmeur-smark.png"
+          alt=""
+          width={800}
+          height={800}
+        />
+      </div>
+
+      <div className="shimmeur-container relative z-10">
         <FadeIn className="max-w-[680px] mb-16">
           <span className="eyebrow">Our clients</span>
           <h2
@@ -115,13 +129,13 @@ export default function WhoWeHelp() {
               as="li"
             >
               <article
-                className="shimmeur-who-card rounded-[4px] p-11 h-full flex flex-col"
+                className="shimmeur-who-card rounded-[4px] p-11 h-full flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)]"
                 style={{
-                  background: "var(--shimmeur-cream)",
+                  background: "#FFFFFF",
                 }}
               >
                 <div
-                  className="w-12 h-12 mb-6 opacity-70"
+                  className="mb-6 opacity-100"
                   style={{ color: "var(--shimmeur-navy)" }}
                 >
                   {ICONS[i]}
@@ -133,7 +147,7 @@ export default function WhoWeHelp() {
                 />
                 <p
                   className="text-[0.88rem] leading-[1.75]"
-                  style={{ color: "#5A5A5A" }}
+                  style={{ color: "var(--shimmeur-mid)" }}
                   dangerouslySetInnerHTML={{ __html: sit.body }}
                 />
               </article>

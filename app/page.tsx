@@ -3,7 +3,9 @@ import Hero from "./_components/Hero";
 import Opportunity from "./_components/Opportunity";
 import Process from "./_components/Process";
 import WhoWeHelp from "./_components/WhoWeHelp";
+import WhyShimmeur from "./_components/WhyShimmeur";
 import OurWork from "./_components/OurWork";
+import Testimonials from "./_components/Testimonials";
 import About from "./_components/About";
 import Trust from "./_components/Trust";
 import Contact from "./_components/Contact";
@@ -20,7 +22,9 @@ export default function Home() {
         <Opportunity />
         <Process />
         <WhoWeHelp />
+        <WhyShimmeur />
         <OurWork />
+        <Testimonials />
         <About />
         <Trust />
         <Contact />

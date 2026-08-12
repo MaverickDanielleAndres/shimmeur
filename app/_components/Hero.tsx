@@ -1,5 +1,7 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
-import FadeIn from "./FadeIn";
 
 const MODEL_STATS = [
   {
@@ -20,38 +22,123 @@ const MODEL_STATS = [
 ];
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const linesRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<(HTMLLIElement | null)[]>([]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduced =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    // Stagger the hero text lines
+    const delays = [0, 80, 160, 240, 360, 500];
+    linesRef.current.forEach((el, i) => {
+      if (!el) return;
+      setTimeout(() => {
+        el.classList.add("hero-line-visible");
+      }, delays[i] || i * 100);
+    });
+
+    // Card entrance
+    if (cardRef.current) {
+      setTimeout(() => {
+        cardRef.current!.classList.add("hero-card-visible");
+      }, 600);
+    }
+
+    // Stats stagger
+    statsRef.current.forEach((el, i) => {
+      if (!el) return;
+      setTimeout(() => {
+        el.classList.add("hero-stat-visible");
+      }, 700 + i * 140);
+    });
+  }, []);
+
   return (
     <section
       id="home"
-      className="hero-bg relative isolate overflow-hidden min-h-[100svh] flex items-center"
+      ref={heroRef}
+      className="hero-bg relative isolate overflow-hidden"
+      style={{ minHeight: "100svh", display: "flex", alignItems: "center" }}
     >
-      <div className="shimmeur-container relative z-10 grid lg:grid-cols-[1.3fr_1fr] gap-16 items-center pt-36 pb-28 md:pt-40 md:pb-36">
-        <FadeIn className="text-shimmeur-white">
-          <span className="eyebrow eyebrow-light">
+      {/* Ambient grain overlay */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 hero-grain"
+      />
+
+      <div
+        className="shimmeur-container relative z-10 w-full grid lg:grid-cols-[1.5fr_1fr] gap-10 xl:gap-16 items-center"
+        style={{ paddingTop: "80px", paddingBottom: "40px" }}
+      >
+        {/* Left: headline + CTA */}
+        <div>
+          <span
+            ref={(el) => { linesRef.current[0] = el; }}
+            className="eyebrow eyebrow-light hero-line"
+            style={{ display: "inline-block" }}
+          >
             Property Lifestyle Consulting
           </span>
+
           <h1
-            className="font-display font-medium text-[2.6rem] sm:text-[3.4rem] md:text-[4.2rem] lg:text-[4.6rem] leading-[1.05] mb-7"
-            style={{ color: "#FFFFFF" }}
+            className="font-display font-medium leading-[1.04] mb-5 md:mb-6"
+            style={{
+              color: "#FFFFFF",
+              fontSize: "clamp(2.1rem, 4vw, 4rem)",
+            }}
           >
-            Your property deserves more than{" "}
-            <em
-              className="italic"
-              style={{ color: "var(--shimmeur-sage-light)" }}
+            <span
+              ref={(el) => { linesRef.current[1] = el; }}
+              className="block hero-line"
             >
-              it&rsquo;s been given.
-            </em>
+              Your&nbsp;property&nbsp;deserves
+            </span>
+            <span
+              ref={(el) => { linesRef.current[2] = el; }}
+              className="block hero-line"
+              style={{ transitionDelay: "80ms" }}
+            >
+              more than it&rsquo;s been
+            </span>
+            <span
+              ref={(el) => { linesRef.current[3] = el; }}
+              className="block hero-line"
+              style={{ transitionDelay: "160ms" }}
+            >
+              <em
+                className="italic"
+                style={{ color: "var(--shimmeur-sage-light)" }}
+              >
+                given.
+              </em>
+            </span>
           </h1>
+
           <p
-            className="text-[1.05rem] md:text-[1.1rem] leading-[1.85] max-w-[560px] mb-10"
-            style={{ color: "rgba(255, 255, 255, 0.78)" }}
+            ref={(el) => { linesRef.current[4] = el; }}
+            className="hero-line text-[0.98rem] md:text-[1.05rem] leading-[1.85] mb-8 md:mb-10"
+            style={{
+              color: "rgba(255, 255, 255, 0.78)",
+              maxWidth: "520px",
+              transitionDelay: "240ms",
+            }}
           >
             Most properties sell without unlocking their full potential.
             Shimmeur changes that — funding, designing, and managing the
-            transformation so you receive more at settlement, without the
-            stress.
+            transformation so you receive more at settlement, without the stress.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+
+          <div
+            ref={(el) => { linesRef.current[5] = el; }}
+            className="hero-line flex flex-wrap items-center gap-4"
+            style={{ transitionDelay: "360ms" }}
+          >
             <a href="#what-we-do" className="btn btn-primary">
               See how it works
             </a>
@@ -59,59 +146,58 @@ export default function Hero() {
               Get in touch
             </a>
           </div>
-        </FadeIn>
+        </div>
 
-        <FadeIn delay={1} className="hidden lg:block">
+        {/* Right: model card */}
+        <div
+          ref={cardRef}
+          className="hidden lg:block hero-card rounded-[4px] p-9 xl:p-11"
+          style={{
+            background: "rgba(255, 255, 255, 0.06)",
+            border: "1px solid rgba(255, 255, 255, 0.12)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+          }}
+        >
           <div
-            className="rounded-[4px] p-11"
-            style={{
-              background: "rgba(255, 255, 255, 0.06)",
-              border: "1px solid rgba(255, 255, 255, 0.12)",
-              backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
-            }}
+            className="font-medium tracking-[0.18em] uppercase text-[0.68rem] mb-7"
+            style={{ color: "var(--shimmeur-sage-light)" }}
           >
-            <div
-              className="font-medium tracking-[0.18em] uppercase text-[0.68rem] mb-8"
-              style={{ color: "var(--shimmeur-sage-light)" }}
-            >
-              The Shimmeur model
-            </div>
-
-            <ul>
-              {MODEL_STATS.map((stat, i) => (
-                <li
-                  key={stat.value}
-                  className={`${
-                    i !== MODEL_STATS.length - 1
-                      ? "mb-7 pb-7"
-                      : ""
-                  }`}
-                  style={
-                    i !== MODEL_STATS.length - 1
-                      ? { borderBottom: "1px solid rgba(255,255,255,0.1)" }
-                      : {}
-                  }
-                >
-                  <div
-                    className="font-display text-[2.2rem] font-medium leading-[1.1] mb-1.5"
-                    style={{ color: "#FFFFFF" }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    className="text-[0.82rem] leading-[1.5]"
-                    style={{ color: "rgba(255, 255, 255, 0.6)" }}
-                  >
-                    {stat.label}
-                    <br />
-                    {stat.sub}
-                  </div>
-                </li>
-              ))}
-            </ul>
+            The Shimmeur model
           </div>
-        </FadeIn>
+
+          <ul>
+            {MODEL_STATS.map((stat, i) => (
+              <li
+                key={stat.value}
+                ref={(el) => { statsRef.current[i] = el; }}
+                className={`hero-stat${
+                  i !== MODEL_STATS.length - 1 ? " mb-6 pb-6" : ""
+                }`}
+                style={
+                  i !== MODEL_STATS.length - 1
+                    ? { borderBottom: "1px solid rgba(255,255,255,0.1)" }
+                    : {}
+                }
+              >
+                <div
+                  className="font-display text-[2rem] xl:text-[2.2rem] font-medium leading-[1.1] mb-1.5"
+                  style={{ color: "#FFFFFF" }}
+                >
+                  {stat.value}
+                </div>
+                <div
+                  className="text-[0.82rem] leading-[1.5]"
+                  style={{ color: "rgba(255, 255, 255, 0.6)" }}
+                >
+                  {stat.label}
+                  <br />
+                  {stat.sub}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Decorative S-mark */}
@@ -132,14 +218,14 @@ export default function Hero() {
       {/* Scroll affordance */}
       <a
         href="#opportunity"
-        className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-3 text-[0.62rem] tracking-[0.22em] uppercase z-10"
+        className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 text-[0.62rem] tracking-[0.22em] uppercase z-10 scroll-cue"
         style={{ color: "rgba(255, 255, 255, 0.5)" }}
         aria-label="Scroll to content"
       >
         <span>Scroll</span>
         <span
           aria-hidden="true"
-          className="block w-px h-12"
+          className="block w-px h-10 scroll-cue-line"
           style={{
             background:
               "linear-gradient(to bottom, rgba(255,255,255,0.5), transparent)",

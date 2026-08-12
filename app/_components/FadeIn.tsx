@@ -7,6 +7,7 @@ type FadeInProps = {
   delay?: 0 | 1 | 2 | 3 | 4;
   className?: string;
   as?: React.ElementType;
+  variant?: "fade" | "reveal" | "reveal-up";
 };
 
 export default function FadeIn({
@@ -14,6 +15,7 @@ export default function FadeIn({
   delay = 0,
   className = "",
   as: Tag = "div",
+  variant = "fade",
 }: FadeInProps) {
   const ref = useRef<HTMLElement | null>(null);
 
@@ -39,7 +41,7 @@ export default function FadeIn({
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
     );
 
     observer.observe(node);
@@ -47,12 +49,18 @@ export default function FadeIn({
   }, []);
 
   const Component = Tag as React.ElementType;
+  const baseClass =
+    variant === "reveal-up"
+      ? "reveal-up"
+      : variant === "reveal"
+      ? "reveal"
+      : "fade-in";
+  const delayClass = variant === "fade" && delay ? `fade-in-delay-${delay}` : "";
+
   return (
     <Component
       ref={ref as React.RefObject<HTMLElement>}
-      className={`fade-in ${
-        delay ? `fade-in-delay-${delay}` : ""
-      } ${className}`}
+      className={`${baseClass} ${delayClass} ${className}`.trim()}
     >
       {children}
     </Component>

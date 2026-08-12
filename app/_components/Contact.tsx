@@ -5,10 +5,24 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="section-pad"
+      className="section-pad relative overflow-hidden"
       style={{ background: "#FFFFFF" }}
     >
-      <div className="shimmeur-container">
+      
+      {/* Decorative S-mark Watermark */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-[10%] -bottom-[10%] opacity-[0.03] z-0 hidden md:block"
+      >
+        <img
+          src="/img/shimmeur-smark.png"
+          alt=""
+          width={800}
+          height={800}
+        />
+      </div>
+
+      <div className="shimmeur-container relative z-10">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-20 items-start">
           <FadeIn>
             <span className="eyebrow">Get in touch</span>

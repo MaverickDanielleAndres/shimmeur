@@ -13,7 +13,7 @@ const INITIAL_SCRIPT: Msg[] = [
     role: "bot",
     text:
       "Hi, I&rsquo;m here to help you start a quiet conversation about your property. What would be most useful?",
-    time: stamp(),
+    time: "",
   },
 ];
 
@@ -69,6 +69,20 @@ export default function ChatWidget() {
     const node = scrollRef.current;
     if (node) node.scrollTop = node.scrollHeight;
   }, [open, messages, typing]);
+
+  // Populate timestamps client-side after mount to avoid hydration mismatch
+  useEffect(() => {
+    const id = window.requestAnimationFrame(() => {
+      const now = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      setMessages((m) =>
+        m.map((msg) => (msg.time ? msg : { ...msg, time: now })),
+      );
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, []);
 
   const send = (text: string) => {
     const trimmed = text.trim();
@@ -207,10 +221,11 @@ export default function ChatWidget() {
           {/* Messages */}
           <div
             ref={scrollRef}
-            className="flex-1 overflow-y-auto px-5 py-5 space-y-3"
+            className="flex-1 overflow-y-auto chat-scroll"
             style={{ background: "var(--shimmeur-cream)" }}
           >
-            {messages.map((m, i) => (
+            <div className="px-5 py-5 space-y-3">
+              {messages.map((m, i) => (
               <div
                 key={i}
                 className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
@@ -298,6 +313,7 @@ export default function ChatWidget() {
                 </div>
               </div>
             )}
+            </div>
           </div>
 
           {/* Input */}
@@ -371,6 +387,21 @@ export default function ChatWidget() {
           span {
             animation: none !important;
           }
+        }
+        .chat-scroll::-webkit-scrollbar {
+          width: 6px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+          background: transparent;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+          background: var(--shimmeur-stone);
+          border-radius: 10px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb:hover {
+          background: var(--shimmeur-mid);
         }
       `}</style>
     </>

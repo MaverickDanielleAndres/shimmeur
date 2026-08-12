@@ -22,12 +22,26 @@ const PILLARS = [
 export default function Trust() {
   return (
     <section
-      className="bg-shimmeur-white section-pad"
+      className="relative overflow-hidden section-pad"
       style={{ background: "var(--shimmeur-white)" }}
     >
+      
+      {/* Decorative S-mark Watermark */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-[10%] -bottom-[10%] opacity-[0.03] z-0 hidden md:block"
+      >
+        <img
+          src="/img/shimmeur-smark.png"
+          alt=""
+          width={800}
+          height={800}
+        />
+      </div>
+
       <div className="shimmeur-container">
         <div className="grid lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-start">
-          <FadeIn>
+          <FadeIn variant="reveal" as="div">
             <span className="eyebrow">Delivery &amp; trust</span>
             <h2
               className="font-display font-medium text-[2.2rem] md:text-[2.7rem] lg:text-[3rem] leading-[1.1] mb-6"
@@ -40,8 +54,9 @@ export default function Trust() {
               style={{ color: "var(--shimmeur-mid)" }}
             >
               Shimmeur is supported by an experienced builder and a trusted
-              tribe of trades. The work is delivered to a professional standard,
-              with the licences and insurance owners need in place from day one.
+              tribe of trades. The work is delivered to a professional
+              standard, with the licences and insurance owners need in place
+              from day one.
             </p>
 
             <dl
@@ -86,7 +101,7 @@ export default function Trust() {
             </dl>
             <p
               className="text-[0.78rem] leading-[1.7] mt-5 max-w-[460px]"
-              style={{ color: "rgba(74,74,74,0.75)" }}
+              style={{ color: "rgba(74,74,74,0.78)" }}
             >
               Licence references are shown for context and surety. They are not
               held by Natalie Phillips personally.
@@ -99,9 +114,10 @@ export default function Trust() {
                 key={pillar.title}
                 delay={(((i % 3) + 1) as 1 | 2 | 3)}
                 as="li"
+                variant="reveal"
               >
                 <div
-                  className="pt-5"
+                  className="shimmeur-pillar pt-5"
                   style={{ borderTop: "2px solid var(--shimmeur-sage)" }}
                 >
                   <div
@@ -128,6 +144,20 @@ export default function Trust() {
           </ul>
         </div>
       </div>
+
+      <style>{`
+        .shimmeur-pillar {
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+            border-top-color 0.3s ease;
+        }
+        .shimmeur-pillar:hover {
+          transform: translateY(-4px);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .shimmeur-pillar { transition: none; }
+          .shimmeur-pillar:hover { transform: none; }
+        }
+      `}</style>
     </section>
   );
 }
