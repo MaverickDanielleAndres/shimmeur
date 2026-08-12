@@ -56,7 +56,7 @@ export default function Nav() {
         <a
           href="#home"
           onClick={(e) => handleAnchorClick(e, "#home")}
-          className="link-underline font-display text-[1.45rem] tracking-[0.18em] uppercase transition-colors"
+          className="link-underline font-display font-medium text-[1.65rem] uppercase tracking-[0.08em] transition-colors"
           style={{ color: scrolled ? "var(--shimmeur-navy)" : "#FFFFFF" }}
         >
           Shimmeur

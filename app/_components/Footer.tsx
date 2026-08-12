@@ -29,7 +29,7 @@ export default function Footer() {
               className="mb-7 opacity-90 invert"
             />
             <div
-              className="font-display text-[1.45rem] tracking-[0.18em] uppercase mb-2"
+              className="font-display font-medium text-[1.65rem] uppercase tracking-[0.08em] mb-2"
               style={{ color: "#FFFFFF" }}
             >
               Shimmeur
