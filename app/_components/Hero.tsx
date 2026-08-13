@@ -87,7 +87,7 @@ export default function Hero() {
           </span>
 
           <h1
-            className="font-display font-bold leading-[1.04] mb-5 md:mb-6"
+            className="font-display font-medium leading-[1.04] mb-5 md:mb-6"
             style={{
               color: "#FFFFFF",
               fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
@@ -97,26 +97,21 @@ export default function Hero() {
               ref={(el) => { linesRef.current[1] = el; }}
               className="block hero-line"
             >
-              Your property deserves
+              Your property
             </span>
             <span
               ref={(el) => { linesRef.current[2] = el; }}
               className="block hero-line"
               style={{ transitionDelay: "80ms" }}
             >
-              more than it&rsquo;s been
+              deserves more than
             </span>
             <span
               ref={(el) => { linesRef.current[3] = el; }}
-              className="block hero-line"
-              style={{ transitionDelay: "160ms" }}
+              className="block hero-line italic"
+              style={{ transitionDelay: "160ms", color: "var(--shimmeur-sage-light)" }}
             >
-              <em
-                className="italic"
-                style={{ color: "var(--shimmeur-sage-light)" }}
-              >
-                given.
-              </em>
+              it&rsquo;s been given.
             </span>
           </h1>
 
@@ -135,7 +130,7 @@ export default function Hero() {
           <div
             ref={(el) => { linesRef.current[5] = el; }}
             className="hero-line flex flex-wrap items-center gap-4"
-            style={{ transitionDelay: "360ms" }}
+            style={{ transitionDelay: "320ms" }}
           >
             <a href="#what-we-do" className="btn btn-primary">
               See how it works
