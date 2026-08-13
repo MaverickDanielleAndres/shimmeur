@@ -142,40 +142,50 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: model card — crossfade slideshow, text bottom-left */}
+        {/* Right: model card placeholder for grid layout */}
         <div
           ref={cardRef}
-          className="flex hero-card rounded-[6px] relative overflow-hidden flex-col justify-end w-full min-h-[400px] lg:min-h-[500px]"
-          style={{
-            border: "1px solid rgba(255, 255, 255, 0.10)",
-          }}
-        >
-          {/* Crossfade slides — Next.js Image for full quality */}
-          {SLIDESHOW_IMAGES.map((src, i) => (
-            <div
-              key={src}
-              aria-hidden="true"
-              className="absolute inset-0"
-              style={{
-                zIndex: 0,
-                opacity: i === activeSlide ? 1 : 0,
-                transition: "opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1)",
-              }}
-            >
-              <Image
-                src={src}
-                alt=""
-                fill
-                sizes="(min-width: 1024px) 38vw, 0px"
-                className="object-cover object-center"
-                quality={90}
-                priority={i === 0}
-              />
-            </div>
-          ))}
+          className="hero-card relative w-full min-h-[400px] lg:min-h-0"
+        />
+      </div>
 
-
-        </div>
+      {/* Full-bleed background on the right with seamless mask fade */}
+      <style>{`
+        .hero-image-mask {
+          -webkit-mask-image: linear-gradient(to top, black 60%, transparent 100%);
+          mask-image: linear-gradient(to top, black 60%, transparent 100%);
+        }
+        @media (min-width: 1024px) {
+          .hero-image-mask {
+            -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);
+            mask-image: linear-gradient(to left, black 50%, transparent 100%);
+          }
+        }
+      `}</style>
+      <div className="hero-image-mask absolute inset-x-0 bottom-0 top-[auto] h-[55vh] lg:inset-x-auto lg:bottom-auto lg:top-0 lg:right-0 lg:w-[55vw] lg:h-full overflow-hidden z-0 pointer-events-none">
+        {/* Crossfade slides — Next.js Image for full quality */}
+        {SLIDESHOW_IMAGES.map((src, i) => (
+          <div
+            key={src}
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              zIndex: 0,
+              opacity: i === activeSlide ? 1 : 0,
+              transition: "opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              className="object-cover object-center"
+              quality={90}
+              priority={i === 0}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Decorative S-mark */}
