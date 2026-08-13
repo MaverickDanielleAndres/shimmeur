@@ -86,7 +86,7 @@ export default function WhoWeHelp() {
     <section
       id="who-we-help"
       className="section-pad relative overflow-hidden"
-      style={{ background: "var(--shimmeur-white)" }}
+      style={{ background: "var(--shimmeur-white)", paddingBottom: "40px" }}
     >
       
       {/* Decorative S-mark Watermark */}
@@ -95,7 +95,7 @@ export default function WhoWeHelp() {
         className="pointer-events-none absolute -right-[10%] -bottom-[10%] opacity-[0.03] z-0 hidden md:block"
       >
         <img
-          src="/img/shimmeur-smark.png"
+          src="/ppt/image9.png"
           alt=""
           width={800}
           height={800}

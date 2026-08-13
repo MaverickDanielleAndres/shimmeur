@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import Image from "next/image";
 const NAV_LINKS = [
-  { href: "#what-we-do", label: "What We Do" },
-  { href: "#who-we-help", label: "Who We Help" },
-  { href: "#our-work", label: "Our Work" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Get in Touch" },
+  { href: "#what-we-do", label: "What we do" },
+  { href: "#why-shimmeur", label: "Why Shimmeur" },
+  { href: "#our-team", label: "Our team" },
+  { href: "#who-we-help", label: "Our clients" },
+  { href: "#our-portfolio", label: "Our Portfolio" },
+  { href: "#the-story", label: "About" },
+  { href: "#contact", label: "Get in touch" },
 ];
 
 export default function Nav() {
@@ -52,23 +54,42 @@ export default function Nav() {
       }`}
       aria-label="Primary"
     >
-      <div className="shimmeur-container flex items-center justify-between py-5 md:py-6">
+      <div className="shimmeur-container flex items-center justify-between gap-4 lg:gap-6 xl:gap-10 py-5 md:py-6">
         <a
           href="#home"
           onClick={(e) => handleAnchorClick(e, "#home")}
-          className="link-underline font-display font-medium text-[1.65rem] uppercase tracking-[0.08em] transition-colors"
+          className="transition-colors"
           style={{ color: scrolled ? "var(--shimmeur-navy)" : "#FFFFFF" }}
         >
-          Shimmeur
+          {/* Mobile Logo */}
+          <div className="md:hidden relative w-8 h-10 flex items-center justify-center">
+            <Image 
+              src="/img/shimmeur-logo-sage.png" 
+              alt="Shimmeur" 
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+
+          {/* Desktop Logo */}
+          <div className="hidden md:flex flex-col">
+            <span className="font-display font-medium text-[1.2rem] xl:text-[1.5rem] uppercase tracking-[0.05em] leading-none mb-[2px]">
+              Shimmeur
+            </span>
+            <span className="text-[0.45rem] xl:text-[0.55rem] font-medium tracking-[0.2em] uppercase opacity-90 leading-none whitespace-nowrap">
+              Client Preso
+            </span>
+          </div>
         </a>
 
-        <ul className="hidden lg:flex items-center gap-9">
+        <ul className="hidden lg:flex items-center gap-3 xl:gap-6">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 onClick={(e) => handleAnchorClick(e, link.href)}
-                className="link-underline text-[0.72rem] font-medium tracking-[0.16em] uppercase transition-colors"
+                className="link-underline whitespace-nowrap text-[0.55rem] xl:text-[0.65rem] font-medium tracking-[0.08em] xl:tracking-[0.12em] uppercase transition-colors"
                 style={{
                   color: scrolled
                     ? "var(--shimmeur-mid)"
@@ -85,7 +106,7 @@ export default function Nav() {
           <a
             href="#contact"
             onClick={(e) => handleAnchorClick(e, "#contact")}
-            className={`btn text-[0.7rem] py-3 px-5 ${
+            className={`btn text-[0.6rem] xl:text-[0.65rem] tracking-[0.1em] py-2 px-4 xl:py-3 xl:px-5 ${
               scrolled ? "btn-navy" : "btn-primary"
             }`}
           >

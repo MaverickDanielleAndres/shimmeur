@@ -4,21 +4,42 @@ import { useEffect, useRef } from "react";
 import FadeIn from "./FadeIn";
 import StickyScroll from "./StickyScroll";
 
+// Sourced from Shimmeur client preso — Slide 3: "Why Shimmeur?"
 const POINTS = [
   {
     no: "01",
-    title: "Overwhelm at the worst time",
-    body: "Preparing a home for sale during a life transition — estate, separation, downsizing — is exhausting. Most owners don&rsquo;t have the bandwidth to do it well.",
+    title: "We understand our clients&rsquo; needs",
+    body: "Every property and every owner is different. We take time to listen, understand the situation, and tailor our approach accordingly — never one-size-fits-all.",
   },
   {
     no: "02",
-    title: "Guesswork that&rsquo;s expensive",
-    body: "Without design expertise and renovation experience, most improvements either miss the mark or don&rsquo;t generate a meaningful return at auction.",
+    title: "We love win-win deals",
+    body: "Our partnership model is built on shared outcomes. When your property performs, so does the relationship. That alignment drives everything we do.",
   },
   {
     no: "03",
-    title: "Money left on the table",
-    body: "The gap between a property sold as-is and one properly prepared can be significant — sometimes hundreds of thousands. That gap is the Shimmeur opportunity.",
+    title: "We design the vision",
+    body: "Before a single tradesperson is briefed, we establish a clear picture of where the property is going — grounded in design, market reality, and your goals.",
+  },
+  {
+    no: "04",
+    title: "We collaborate",
+    body: "Owners, agents, builders and stylists all pulling in the same direction. Great results come from great coordination, and we&rsquo;re the ones holding it together.",
+  },
+  {
+    no: "05",
+    title: "We take the hassle out of renovation",
+    body: "From approvals to styling, the complexity stays off your plate. You stay informed — not overwhelmed. The project stress stays with us.",
+  },
+  {
+    no: "06",
+    title: "We bring property vision to life",
+    body: "On time, on brief, and with the care the home — and the owner — deserve. We don&rsquo;t just project-manage; we champion the outcome.",
+  },
+  {
+    no: "07",
+    title: "We realise untapped value",
+    body: "The difference between a property sold as-is and one properly prepared is where the Shimmeur opportunity lives. We close that gap, together.",
   },
 ];
 
@@ -45,7 +66,7 @@ export default function Opportunity() {
 
   return (
     <section
-      id="opportunity"
+      id="why-shimmeur"
       className="section-pad relative overflow-clip"
       style={{ background: "var(--shimmeur-cream)" }}
     >
@@ -58,7 +79,7 @@ export default function Opportunity() {
         className="pointer-events-none absolute -right-[10%] -bottom-[10%] opacity-[0.03] z-0 hidden md:block"
       >
         <img
-          src="/img/shimmeur-smark.png"
+          src="/ppt/image9.png"
           alt=""
           width={800}
           height={800}
@@ -69,7 +90,7 @@ export default function Opportunity() {
         <StickyScroll>
           {/* Sticky left column */}
           <FadeIn variant="reveal" as="div">
-            <span className="eyebrow">The reality</span>
+            <span className="eyebrow">Why Shimmeur</span>
             <h2
               className="font-display font-medium leading-[1.05] mb-6"
               style={{
@@ -77,24 +98,22 @@ export default function Opportunity() {
                 fontSize: "clamp(2rem, 3.5vw, 3.4rem)",
               }}
             >
-              Most properties sell for<br />
-              <span className="whitespace-nowrap">less than they should.</span>
+              We understand what<br />
+              <span className="whitespace-nowrap">our clients need.</span>
             </h2>
             <p
               className="text-[1.05rem] leading-[1.85] max-w-[480px] mb-10"
               style={{ color: "var(--shimmeur-mid)" }}
             >
-              The stress of preparing a home for sale leads most owners to take
-              shortcuts — or none at all. They sell as-is, buyers discount
-              heavily for perceived work, and the gap between what a property
-              could achieve and what it does is rarely recovered.
+              Seven principles shape every project, every conversation, and
+              every hand we extend to the people behind the property.
             </p>
             <a
               href="#what-we-do"
               className="inline-flex items-center gap-3 text-[0.72rem] font-medium tracking-[0.16em] uppercase"
               style={{ color: "var(--shimmeur-navy)" }}
             >
-              <span className="link-underline">See how we close the gap</span>
+              <span className="link-underline">See how we work</span>
               <svg
                 width="14"
                 height="14"
@@ -109,7 +128,7 @@ export default function Opportunity() {
             </a>
           </FadeIn>
 
-          {/* Scrolling right column — three problem cards */}
+          {/* Scrolling right column — seven reason cards */}
           {POINTS.map((point, idx) => (
             <article
               key={point.no}
@@ -132,9 +151,8 @@ export default function Opportunity() {
               <h3
                 className="font-body font-semibold text-[1.05rem] tracking-[0.01em] mb-3"
                 style={{ color: "var(--shimmeur-navy)" }}
-              >
-                {point.title.replace(/&rsquo;/g, "'")}
-              </h3>
+                dangerouslySetInnerHTML={{ __html: point.title }}
+              />
               <p
                 className="text-[0.95rem] leading-[1.75]"
                 style={{ color: "var(--shimmeur-mid)" }}

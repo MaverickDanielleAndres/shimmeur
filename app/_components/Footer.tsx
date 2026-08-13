@@ -1,11 +1,13 @@
 import Image from "next/image";
 
 const FOOTER_LINKS = [
-  { href: "#what-we-do", label: "What We Do" },
-  { href: "#who-we-help", label: "Who We Help" },
-  { href: "#our-work", label: "Our Work" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Get in Touch" },
+  { href: "#what-we-do", label: "What we do" },
+  { href: "#why-shimmeur", label: "Why Shimmeur" },
+  { href: "#our-team", label: "Our team" },
+  { href: "#who-we-help", label: "Our clients" },
+  { href: "#our-portfolio", label: "Our Portfolio" },
+  { href: "#the-story", label: "About" },
+  { href: "#contact", label: "Get in touch" },
 ];
 
 export default function Footer() {
@@ -26,7 +28,7 @@ export default function Footer() {
               alt="Shimmeur"
               width={88}
               height={88}
-              className="mb-7 opacity-90 invert"
+              className="mb-7 opacity-90 brightness-0 invert"
             />
             <div
               className="font-display font-medium text-[1.65rem] uppercase tracking-[0.08em] mb-2"

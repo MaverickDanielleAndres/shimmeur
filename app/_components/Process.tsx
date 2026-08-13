@@ -121,7 +121,7 @@ export default function Process() {
         className="pointer-events-none absolute -left-32 -top-32 opacity-[0.06]"
       >
         <Image
-          src="/img/shimmeur-smark.png"
+          src="/ppt/image9.png"
           alt=""
           width={520}
           height={520}
@@ -136,7 +136,7 @@ export default function Process() {
         className="pointer-events-none absolute -right-[10%] -bottom-[10%] opacity-[0.03] z-0 hidden md:block"
       >
         <img
-          src="/img/shimmeur-smark.png"
+          src="/ppt/image9.png"
           alt=""
           width={800}
           height={800}

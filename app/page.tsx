@@ -1,12 +1,13 @@
 import Nav from "./_components/Nav";
 import Hero from "./_components/Hero";
+import WhatWeDo from "./_components/WhatWeDo";
 import Opportunity from "./_components/Opportunity";
-import Process from "./_components/Process";
+import OurTeam from "./_components/OurTeam";
+import OurExperience from "./_components/OurExperience";
 import WhoWeHelp from "./_components/WhoWeHelp";
-import WhyShimmeur from "./_components/WhyShimmeur";
-import OurWork from "./_components/OurWork";
 import Testimonials from "./_components/Testimonials";
-import About from "./_components/About";
+import ImageGallery from "./_components/ImageGallery";
+import OurWork from "./_components/OurWork";
 import Trust from "./_components/Trust";
 import Contact from "./_components/Contact";
 import Footer from "./_components/Footer";
@@ -19,13 +20,14 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <WhatWeDo />
         <Opportunity />
-        <Process />
+        <OurTeam />
+        <OurExperience />
         <WhoWeHelp />
-        <WhyShimmeur />
-        <OurWork />
         <Testimonials />
-        <About />
+        <ImageGallery />
+        <OurWork />
         <Trust />
         <Contact />
       </main>

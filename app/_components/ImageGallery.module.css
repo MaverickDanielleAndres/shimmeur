@@ -1,0 +1,120 @@
+.section {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(0.5rem, 1.5vw, 1rem);
+  padding: clamp(2.5rem, 4vw, 3.5rem) clamp(1rem, 4vw, 3rem);
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.container {
+  position: relative;
+  width: min(100%, 82rem);
+  margin-inline: auto;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(16rem, 0.7fr);
+  column-gap: 4rem;
+  align-items: end;
+  margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.kicker {
+  grid-column: 1 / -1;
+  margin: 0 0 1rem;
+  color: var(--shimmeur-sage);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.header h2 {
+  margin: 0;
+  margin-right: -0.15em;
+  padding-left: 0.05em;
+  padding-right: 0.15em;
+  color: var(--shimmeur-navy);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  font-family: var(--font-cormorant), serif;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.header > p:last-child {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--shimmeur-mid);
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.55;
+}
+
+.expandingCardsRow {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding-top: 0;
+}
+
+.viewMore {
+  display: inline-flex;
+  min-width: 12rem;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border: 1px solid var(--shimmeur-navy);
+  border-radius: 999px;
+  color: var(--shimmeur-navy);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .viewMore:hover {
+    color: var(--shimmeur-cream);
+    background: var(--shimmeur-navy);
+    border-color: var(--shimmeur-navy);
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 991px) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+    justify-items: center;
+  }
+  
+  .header > p:last-child {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    margin-top: 0;
+    padding: 1rem clamp(1rem, 5vw, 1.5rem) clamp(2.5rem, 4vw, 3.5rem);
+  }
+
+  .header h2 {
+    font-size: clamp(1.35rem, 6.5vw, 2rem);
+    text-wrap: wrap;
+    max-width: none;
+  }
+}

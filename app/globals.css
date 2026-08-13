@@ -724,3 +724,53 @@ select:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .shimmeur-cookie-enter { animation: none; }
 }
+
+/* ============================================================
+   WHAT WE DO SECTION — alternating image/text rows
+============================================================ */
+
+/* Row entrance */
+.wwd-row {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.wwd-row-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Text side subtle hover lift */
+.wwd-text-side {
+  transition: background 0.3s ease;
+}
+
+.wwd-row:hover .wwd-text-side {
+  background: rgba(93, 119, 114, 0.04);
+}
+
+/* Image subtle zoom-in on hover */
+.wwd-img {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.wwd-row:hover .wwd-img {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wwd-row {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .wwd-img {
+    transition: none;
+  }
+}
+

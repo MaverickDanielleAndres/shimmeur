@@ -15,7 +15,7 @@ export default function Contact() {
         className="pointer-events-none absolute -right-[10%] -bottom-[10%] opacity-[0.03] z-0 hidden md:block"
       >
         <img
-          src="/img/shimmeur-smark.png"
+          src="/ppt/image9.png"
           alt=""
           width={800}
           height={800}

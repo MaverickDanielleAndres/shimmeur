@@ -81,6 +81,48 @@ const DETAILED_PROJECTS = [
       "/img/project/image37.png",
     ],
   },
+  {
+    location: "Baulkham Hills, NSW",
+    title: "Main bedroom & Stairwell refresh",
+    outcome:
+      "Creating a luxurious main bedroom suite and refreshing the stairwell.",
+    scope:
+      "Main bedroom addition with ensuite and walk-in robe. Complete stairwell and bedroom refresh.",
+    cover: "/ppt/image42.png",
+    gallery: [
+      "/ppt/image44.png",
+      "/ppt/image43.png",
+      "/ppt/image45.png",
+    ],
+  },
+  {
+    location: "Baulkham Hills, NSW",
+    title: "Kitchen & Multi-generational living",
+    outcome:
+      "A complete kitchen transformation and conversion to support multi-generational living.",
+    scope:
+      "New contemporary kitchen, and conversion of the old kitchen into a 4th bedroom.",
+    cover: "/ppt/image49.PNG",
+    gallery: [
+      "/ppt/image51.png",
+      "/ppt/image50.png",
+      "/ppt/image52.png",
+    ],
+  },
+  {
+    location: "Baulkham Hills, NSW",
+    title: "Downstairs bathroom & 2nd Lounge",
+    outcome:
+      "Upgrading the downstairs amenities and creating a secondary living space.",
+    scope:
+      "Complete renovation of the downstairs bathroom and styling of the 2nd lounge area.",
+    cover: "/ppt/image47.png",
+    gallery: [
+      "/ppt/image48.png",
+      "/ppt/image54.png",
+      "/ppt/image55.png",
+    ],
+  },
 ];
 
 export default function OurWork() {
@@ -111,10 +153,124 @@ export default function OurWork() {
 
   return (
     <>
+      
+
+      <section
+        id="our-work"
+        className="section-pad"
+        style={{ background: "#ffffff" }}
+      >
+        <div className="shimmeur-container relative z-10">
+          <FadeIn variant="reveal" className="max-w-[720px] mb-16 lg:mb-20" as="div">
+            <span className="eyebrow">Our Portfolio</span>
+            <h2
+              className="font-display font-medium text-[2.2rem] md:text-[2.7rem] lg:text-[3rem] leading-[1.1] mb-6"
+              style={{ color: "var(--shimmeur-navy)" }}
+            >
+              Our Work.
+            </h2>
+            <p
+              className="text-[1.05rem] leading-[1.85] max-w-[600px]"
+              style={{ color: "var(--shimmeur-mid)" }}
+            >
+              See how we uncover a property&rsquo;s true value through thoughtful preparation and design-led updates.
+            </p>
+          </FadeIn>
+
+          <div className="flex flex-col gap-24 lg:gap-32 mt-16 lg:mt-24">
+            {DETAILED_PROJECTS.map((project, i) => (
+              <FadeIn
+                key={project.title}
+                delay={(((i % 3) + 1) as 1 | 2 | 3)}
+                as="div"
+                variant="reveal"
+                className="grid lg:grid-cols-12 gap-10 lg:gap-16"
+              >
+                <div className={`relative lg:col-span-7 ${i === 1 || i === 4 ? "lg:order-2" : ""}`}>
+                  <div
+                    ref={(el) => {
+                      coverRefs.current[i] = el;
+                    }}
+                    className="relative aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden rounded-[4px]"
+                    style={{ background: "var(--shimmeur-stone)" }}
+                  >
+                    <Image
+                      src={project.cover}
+                      alt={`${project.title} — ${project.location}`}
+                      fill
+                      sizes="(min-width: 1024px) 58vw, 100vw"
+                      className="object-cover will-change-transform transition-transform duration-300"
+                      style={{ transform: "translateY(0) scale(1.04)" }}
+                      priority={i === 0}
+                    />
+                  </div>
+                </div>
+
+                <div className={`flex flex-col justify-between h-full lg:col-span-5 ${i === 1 || i === 4 ? "lg:order-1" : ""}`}>
+                  <div>
+                    <div
+                      className="font-medium tracking-[0.18em] uppercase text-[0.7rem] mb-3"
+                      style={{ color: "var(--shimmeur-sage)" }}
+                    >
+                      {project.location}
+                    </div>
+                    <h3
+                      className="font-display font-medium text-[1.6rem] md:text-[1.85rem] leading-[1.2] mb-5"
+                      style={{ color: "var(--shimmeur-navy)" }}
+                    >
+                      {project.title}
+                    </h3>
+                    <p
+                      className="text-[0.95rem] leading-[1.85] mb-6"
+                      style={{ color: "var(--shimmeur-mid)" }}
+                    >
+                      {project.outcome}
+                    </p>
+
+                    <div className="pt-5" style={{ borderTop: "1px solid var(--shimmeur-stone)" }}>
+                      <div
+                        className="font-medium tracking-[0.16em] uppercase text-[0.7rem] mb-3"
+                        style={{ color: "var(--shimmeur-navy)" }}
+                      >
+                        Scope
+                      </div>
+                      <p
+                        className="text-[0.9rem] leading-[1.75]"
+                        style={{ color: "var(--shimmeur-mid)" }}
+                      >
+                        {project.scope}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-3 pt-6 lg:pt-8 mt-auto">
+                    {project.gallery.map((img, idx) => (
+                      <div
+                        key={img}
+                        className="relative aspect-square overflow-hidden rounded-[3px]"
+                        style={{ background: "var(--shimmeur-stone)" }}
+                      >
+                        <Image
+                          src={img}
+                          alt={`${project.title} — detail ${idx + 1}`}
+                          fill
+                          sizes="(min-width: 1024px) 12vw, 30vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section
         id="before-after"
-        className="section-pad !pb-0 relative overflow-hidden"
-        style={{ background: "var(--shimmeur-cream)" }}
+        className="section-pad !pt-0 relative overflow-hidden"
+        style={{ background: "#ffffff" }}
       >
         
       {/* Decorative S-mark Watermark */}
@@ -123,7 +279,7 @@ export default function OurWork() {
         className="pointer-events-none absolute -right-[10%] -bottom-[10%] opacity-[0.03] z-0 hidden md:block"
       >
         <img
-          src="/img/shimmeur-smark.png"
+          src="/ppt/image9.png"
           alt=""
           width={800}
           height={800}
@@ -222,102 +378,6 @@ export default function OurWork() {
                   >
                     {project.outcome}
                   </p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="our-work"
-        className="section-pad !pt-0"
-        style={{ background: "var(--shimmeur-cream)" }}
-      >
-        <div className="shimmeur-container">
-          <div className="flex flex-col gap-24 lg:gap-32 mt-16 lg:mt-24">
-            {DETAILED_PROJECTS.map((project, i) => (
-              <FadeIn
-                key={project.title}
-                delay={(((i % 3) + 1) as 1 | 2 | 3)}
-                as="div"
-                variant="reveal"
-                className="grid lg:grid-cols-12 gap-10 lg:gap-16"
-              >
-                <div className={`relative lg:col-span-7 ${i === 1 ? "lg:order-2" : ""}`}>
-                  <div
-                    ref={(el) => {
-                      coverRefs.current[i] = el;
-                    }}
-                    className="relative aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden rounded-[4px]"
-                    style={{ background: "var(--shimmeur-stone)" }}
-                  >
-                    <Image
-                      src={project.cover}
-                      alt={`${project.title} — ${project.location}`}
-                      fill
-                      sizes="(min-width: 1024px) 58vw, 100vw"
-                      className="object-cover will-change-transform transition-transform duration-300"
-                      style={{ transform: "translateY(0) scale(1.04)" }}
-                      priority={i === 0}
-                    />
-                  </div>
-                </div>
-
-                <div className={`flex flex-col justify-between h-full lg:col-span-5 ${i === 1 ? "lg:order-1" : ""}`}>
-                  <div>
-                    <div
-                      className="font-medium tracking-[0.18em] uppercase text-[0.7rem] mb-3"
-                      style={{ color: "var(--shimmeur-sage)" }}
-                    >
-                      {project.location}
-                    </div>
-                    <h3
-                      className="font-display font-medium text-[1.6rem] md:text-[1.85rem] leading-[1.2] mb-5"
-                      style={{ color: "var(--shimmeur-navy)" }}
-                    >
-                      {project.title}
-                    </h3>
-                    <p
-                      className="text-[0.95rem] leading-[1.85] mb-6"
-                      style={{ color: "var(--shimmeur-mid)" }}
-                    >
-                      {project.outcome}
-                    </p>
-
-                    <div className="pt-5" style={{ borderTop: "1px solid var(--shimmeur-stone)" }}>
-                      <div
-                        className="font-medium tracking-[0.16em] uppercase text-[0.7rem] mb-3"
-                        style={{ color: "var(--shimmeur-navy)" }}
-                      >
-                        Scope
-                      </div>
-                      <p
-                        className="text-[0.9rem] leading-[1.75]"
-                        style={{ color: "var(--shimmeur-mid)" }}
-                      >
-                        {project.scope}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-3 pt-6 lg:pt-8 mt-auto">
-                    {project.gallery.map((img, idx) => (
-                      <div
-                        key={img}
-                        className="relative aspect-square overflow-hidden rounded-[3px]"
-                        style={{ background: "var(--shimmeur-stone)" }}
-                      >
-                        <Image
-                          src={img}
-                          alt={`${project.title} — detail ${idx + 1}`}
-                          fill
-                          sizes="(min-width: 1024px) 12vw, 30vw"
-                          className="object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </FadeIn>
             ))}
