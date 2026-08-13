@@ -165,8 +165,8 @@ export default function Nav() {
           style={{ background: "var(--shimmeur-cream)" }}
           aria-hidden="true"
         />
-        <div className="relative h-full overflow-y-auto px-8 pt-8 pb-16">
-          <ul className="flex flex-col gap-1">
+        <div className="relative h-full overflow-y-auto px-8 pt-4 pb-6">
+          <ul className="flex flex-col gap-0">
             {NAV_LINKS.map((link) => (
               <li
                 key={link.href}
@@ -176,7 +176,7 @@ export default function Nav() {
                 <a
                   href={link.href}
                   onClick={(e) => handleAnchorClick(e, link.href)}
-                  className="block py-5 font-display text-2xl"
+                  className="block py-[0.85rem] font-display text-[1.35rem]"
                   style={{ color: "var(--shimmeur-navy)" }}
                 >
                   {link.label}
@@ -187,7 +187,7 @@ export default function Nav() {
           <a
             href="#contact"
             onClick={(e) => handleAnchorClick(e, "#contact")}
-            className="btn btn-navy mt-10 w-full"
+            className="btn btn-navy mt-6 w-full"
           >
             Start a Conversation
           </a>

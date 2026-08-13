@@ -13,6 +13,7 @@ import Contact from "./_components/Contact";
 import Footer from "./_components/Footer";
 import CookieBanner from "./_components/CookieBanner";
 import ChatWidget from "./_components/ChatWidget";
+import PopupCTA from "./_components/PopupCTA";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
       <Footer />
       <CookieBanner />
       <ChatWidget />
+      <PopupCTA />
     </>
   );
 }

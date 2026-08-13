@@ -3,24 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const MODEL_STATS = [
-  {
-    value: "$0",
-    label: "Out of pocket for the owner.",
-    sub: "We fund the renovation.",
-  },
-  {
-    value: "End\u2011to\u2011end",
-    label: "We design, manage, and deliver.",
-    sub: "You stay hands-free.",
-  },
-  {
-    value: "At settlement",
-    label: "You receive your agreed share",
-    sub: "of the uplift value.",
-  },
-];
-
 const SLIDESHOW_IMAGES = [
   "/ppt/image37.png",
   "/ppt/image38.png",
@@ -192,58 +174,7 @@ export default function Hero() {
             </div>
           ))}
 
-          {/* Bottom-only gradient so text is readable */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 z-[1]"
-            style={{
-              height: "60%",
-              background:
-                "linear-gradient(to top, rgba(5,18,32,0.90) 0%, rgba(5,18,32,0.52) 55%, transparent 100%)",
-            }}
-          />
 
-          {/* Text — very small, bottom-left */}
-          <div className="relative z-[2] p-7 xl:p-9">
-            <div
-              className="uppercase tracking-[0.22em] text-[0.45rem] font-semibold mb-4"
-              style={{ color: "#FFFFFF" }}
-            >
-              The Shimmeur Model
-            </div>
-
-            <ul>
-              {MODEL_STATS.map((stat, i) => (
-                <li
-                  key={stat.value}
-                  ref={(el) => { statsRef.current[i] = el; }}
-                  className={`hero-stat${
-                    i !== MODEL_STATS.length - 1 ? " mb-3 pb-3" : ""
-                  }`}
-                  style={
-                    i !== MODEL_STATS.length - 1
-                      ? { borderBottom: "1px solid rgba(255,255,255,0.13)" }
-                      : {}
-                  }
-                >
-                  <div
-                    className="font-display text-[0.85rem] xl:text-[0.9rem] font-medium leading-[1.1] mb-0.5"
-                    style={{ color: "#FFFFFF" }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    className="text-[0.55rem] leading-[1.5]"
-                    style={{ color: "rgba(255, 255, 255, 0.55)" }}
-                  >
-                    {stat.label}
-                    <br />
-                    {stat.sub}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
 
