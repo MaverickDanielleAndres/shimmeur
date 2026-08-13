@@ -163,9 +163,8 @@ export default function Hero() {
         {/* Right: model card — crossfade slideshow, text bottom-left */}
         <div
           ref={cardRef}
-          className="hidden lg:flex hero-card rounded-[6px] relative overflow-hidden flex-col justify-end"
+          className="flex hero-card rounded-[6px] relative overflow-hidden flex-col justify-end w-full min-h-[400px] lg:min-h-[500px]"
           style={{
-            minHeight: "500px",
             border: "1px solid rgba(255, 255, 255, 0.10)",
           }}
         >

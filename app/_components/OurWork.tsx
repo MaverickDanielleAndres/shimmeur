@@ -184,14 +184,14 @@ export default function OurWork() {
                 delay={(((i % 3) + 1) as 1 | 2 | 3)}
                 as="div"
                 variant="reveal"
-                className="grid lg:grid-cols-12 gap-10 lg:gap-16"
+                className="flex flex-col lg:grid lg:grid-cols-12 gap-10 lg:gap-16 w-full"
               >
-                <div className={`relative lg:col-span-7 ${i === 1 || i === 4 ? "lg:order-2" : ""}`}>
+                <div className={`relative w-full min-w-0 lg:col-span-7 ${i === 1 || i === 4 ? "lg:order-2" : ""}`}>
                   <div
                     ref={(el) => {
                       coverRefs.current[i] = el;
                     }}
-                    className="relative aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden rounded-[4px]"
+                    className="relative aspect-[4/3] lg:aspect-auto lg:h-full w-full overflow-hidden rounded-[4px]"
                     style={{ background: "var(--shimmeur-stone)" }}
                   >
                     <Image
@@ -206,7 +206,7 @@ export default function OurWork() {
                   </div>
                 </div>
 
-                <div className={`flex flex-col justify-between h-full lg:col-span-5 ${i === 1 || i === 4 ? "lg:order-1" : ""}`}>
+                <div className={`flex flex-col justify-between h-full w-full min-w-0 lg:col-span-5 ${i === 1 || i === 4 ? "lg:order-1" : ""}`}>
                   <div>
                     <div
                       className="font-medium tracking-[0.18em] uppercase text-[0.7rem] mb-3"
@@ -215,13 +215,13 @@ export default function OurWork() {
                       {project.location}
                     </div>
                     <h3
-                      className="font-display font-medium text-[1.6rem] md:text-[1.85rem] leading-[1.2] mb-5"
+                      className="font-display font-medium text-[1.6rem] md:text-[1.85rem] leading-[1.2] mb-5 break-words"
                       style={{ color: "var(--shimmeur-navy)" }}
                     >
                       {project.title}
                     </h3>
                     <p
-                      className="text-[0.95rem] leading-[1.85] mb-6"
+                      className="text-[0.95rem] leading-[1.85] mb-6 break-words"
                       style={{ color: "var(--shimmeur-mid)" }}
                     >
                       {project.outcome}
@@ -235,7 +235,7 @@ export default function OurWork() {
                         Scope
                       </div>
                       <p
-                        className="text-[0.9rem] leading-[1.75]"
+                        className="text-[0.9rem] leading-[1.75] break-words"
                         style={{ color: "var(--shimmeur-mid)" }}
                       >
                         {project.scope}
@@ -243,11 +243,11 @@ export default function OurWork() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-3 pt-6 lg:pt-8 mt-auto">
+                  <div className="grid grid-cols-3 gap-3 pt-6 lg:pt-8 mt-auto w-full">
                     {project.gallery.map((img, idx) => (
                       <div
                         key={img}
-                        className="relative aspect-square overflow-hidden rounded-[3px]"
+                        className="relative aspect-square overflow-hidden rounded-[3px] w-full"
                         style={{ background: "var(--shimmeur-stone)" }}
                       >
                         <Image

@@ -64,7 +64,7 @@ export default function Nav() {
           {/* Mobile Logo */}
           <div className="md:hidden relative w-8 h-10 flex items-center justify-center">
             <Image 
-              src="/img/shimmeur-logo-sage.png" 
+              src="/logonobg.png" 
               alt="Shimmeur" 
               fill
               className="object-contain"

@@ -19,22 +19,23 @@ export default function Footer() {
     >
       <div className="shimmeur-container pt-20 pb-8 md:pt-24 md:pb-10">
         <div
-          className="grid lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10 lg:gap-16 pb-14"
+          className="grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-x-6 gap-y-10 lg:gap-16 pb-14"
           style={{ borderBottom: "1px solid rgba(255,255,255,0.12)" }}
         >
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <Image
-              src="/img/shimmeur-smark.png"
+              src="/logonobg.png"
               alt="Shimmeur"
               width={88}
               height={88}
-              className="mb-7 opacity-90 brightness-0 invert"
+              className="mb-7"
             />
             <div
-              className="font-display font-medium text-[1.65rem] uppercase tracking-[0.08em] mb-2"
+              className="font-display font-medium text-[1.65rem] uppercase tracking-[0.08em] mb-2 leading-tight"
               style={{ color: "#FFFFFF" }}
             >
-              Shimmeur
+              Shimmeur <br />
+              Client Preso
             </div>
             <p
               className="font-display italic text-[1.05rem] mb-5"
@@ -112,7 +113,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-10">
+          <div className="col-span-2 lg:col-span-1 grid grid-cols-2 lg:flex lg:flex-col gap-x-6 gap-y-10">
             <div>
               <div
                 className="font-medium tracking-[0.18em] uppercase text-[0.68rem] mb-5"
