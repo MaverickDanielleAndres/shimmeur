@@ -20,8 +20,8 @@ export default function ImageGallery() {
   return (
     <section
       id="our-portfolio"
-      className={`${styles.section} section-pad`}
-      style={{ background: "#ffffff", marginTop: "0", paddingBottom: "clamp(6rem, 10vw, 8rem)" }}
+      className={`${styles.section} section-pad !pb-0 lg:!pb-0`}
+      style={{ background: "#ffffff", marginTop: "0" }}
     >
       <div className="shimmeur-container relative z-10">
         <FadeIn className="max-w-[680px] mb-16 mx-auto text-center flex flex-col items-center">

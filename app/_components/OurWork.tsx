@@ -157,7 +157,7 @@ export default function OurWork() {
 
       <section
         id="our-work"
-        className="section-pad"
+        className="section-pad !pt-12 lg:!pt-16"
         style={{ background: "#ffffff" }}
       >
         <div className="shimmeur-container relative z-10">
