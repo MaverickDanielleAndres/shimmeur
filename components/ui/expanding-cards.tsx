@@ -24,7 +24,8 @@ export const ExpandingCards = React.forwardRef<
     defaultActiveIndex,
   );
   
-  const [isDesktop, setIsDesktop] = React.useState(false);
+  const [isDesktop, setIsDesktop] = React.useState(true);
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -32,7 +33,16 @@ export const ExpandingCards = React.forwardRef<
     };
     handleResize();
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    
+    // Delay transition class to prevent intro animation on mount
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 100);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timer);
+    };
   }, []);
 
   const gridStyle = React.useMemo(() => {
@@ -61,7 +71,7 @@ export const ExpandingCards = React.forwardRef<
     <ul
       className={cn(
         "w-full max-w-7xl mx-auto gap-2 grid h-[600px] md:h-[500px]",
-        "transition-all duration-300 ease-out will-change-[grid-template-columns,grid-template-rows]",
+        mounted ? "transition-all duration-300 ease-out will-change-[grid-template-columns,grid-template-rows]" : "",
         className
       )}
       style={{
@@ -90,8 +100,6 @@ export const ExpandingCards = React.forwardRef<
           <img
             src={item.imgSrc}
             alt={item.title || "Gallery image"}
-            loading="lazy"
-            decoding="async"
             className="absolute inset-x-0 top-0 h-[115%] w-full object-cover object-top transition-[transform,filter] duration-500 ease-out group-data-[active=true]:scale-100 group-data-[active=true]:grayscale-0 scale-[1.08] grayscale"
           />
           {/* Gradient Overlay */}
