@@ -87,17 +87,17 @@ export default function Hero() {
           </span>
 
           <h1
-            className="font-display font-medium leading-[1.04] mb-5 md:mb-6"
+            className="font-display font-bold leading-[1.04] mb-5 md:mb-6"
             style={{
               color: "#FFFFFF",
-              fontSize: "clamp(2.1rem, 4vw, 4rem)",
+              fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
             }}
           >
             <span
               ref={(el) => { linesRef.current[1] = el; }}
               className="block hero-line"
             >
-              Your&nbsp;property&nbsp;deserves
+              Your property deserves
             </span>
             <span
               ref={(el) => { linesRef.current[2] = el; }}
@@ -130,8 +130,6 @@ export default function Hero() {
             }}
           >
             Most properties sell without unlocking their full potential.
-            Shimmeur changes that — funding, designing, and managing the
-            transformation so you receive more at settlement, without the stress.
           </p>
 
           <div
