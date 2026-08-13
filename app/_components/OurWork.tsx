@@ -161,7 +161,7 @@ export default function OurWork() {
         style={{ background: "#ffffff" }}
       >
         <div className="shimmeur-container relative z-10">
-          <FadeIn variant="reveal" className="max-w-[720px] mb-16 lg:mb-20" as="div">
+          <FadeIn variant="reveal" className="max-w-[720px] mb-16 lg:mb-20 mx-auto text-center flex flex-col items-center" as="div">
             <span className="eyebrow">Our Portfolio</span>
             <h2
               className="font-display font-medium text-[2.2rem] md:text-[2.7rem] lg:text-[3rem] leading-[1.1] mb-6"
