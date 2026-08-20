@@ -1,0 +1,342 @@
+﻿
+
+
+SHIMMEUR
+Developer Brief — Version 
+1
+shimmeur.vercel.app
+  ·
+  August 
+2026  ·
+  Prepared for the development team
+How to Use This Brief
+This document maps every change required against the current site at 
+shimmeur.vercel.app
+. Work through each section in order. Where copy is ready to use, it appears in a shaded block — paste it as written
+ or use creative licence if it needs 
+simplifying
+. Where direction is given, it describes the intent clearly enough to execute without further input.
+The overall presentation of the site is clean and well-structured. The layout, visual hierarchy, and section organisation are working. The three things that need the most attention are:
+— Images — these are the single biggest issue holding the site back
+— Key messages — currently too diffuse; needs to be distilled to three clear ideas
+— A handful of specific copy and structural fixes listed below
+Nat’s comments
+The whole site needs to feel warm ,contemporary and considered – a reflection of the work we do
+I’m a little reserved about changing this as you’ve done this so beautifully – please do use your artistic licence as you can see how this may pull together when you are doing it 
+base don
+ the 
+the
+ pieces down the bottom 
+I am into less is more which is why I’m conflicted in changing some elements because you have simplified them so well – 
+lets
+ have a go at this and then we’ll look  at the images
+LOVE The front page and the rolling images – thankyou I just need to sort the images and see what I want to display here
+Priority 
+at a Glance
+Area
+Current State
+Required Action
+Logo / Footer
+"Shimmeur Client 
+Preso
+" visible
+Remove "Client 
+Preso
+" — wordmark only everywhere it appears
+Navigation
+7 tabs + CTA button
+Replace with: Property · Lifestyle · Portfolio · About · Connect
+Images
+Placeholder / outdated images throughout
+ALL images need replacing — see Section 9 for full direction
+Key Messages
+Too many competing ideas across sections
+Distil to 3 messages — see Section 4 for copy
+Seven Principles
+Long bulleted list under Why Shimmeur
+Replace with prose format — copy in Section 5
+Builder Licence
+Licence numbers publicly visible
+Remove numbers — replace with one sentence (see Section 7)
+Ebook
+ capture
+Does not exist
+Add between Hero and Property sections
+Shimmy
+Currently labelled "Shimmeur Assistant"
+Rename to Shimmy — update prompts (see Section 8)
+Capital Partners
+Does not exist
+Add discreet section within Connect — copy in Section 10
+Stories
+Does not exist
+Add as nav section — 
+ebook
+ home + client stories
+Contact form
+Missing prompts + outdated location copy
+Update 3 fields — see Section 6
+Portfolio
+Current structure works well
+Consolidate to 2 hero stories
+ with the current style of rollover images
+ + add BEFORE tags on all before images
+Colour guide: RED = fix 
+existing  ·
+  GREEN = new element to 
+add  ·
+  BLUE = keep but refine
+Section 1 — Navigation
+Current
+What we 
+do  ·
+  Why 
+Shimmeur  ·
+  Our 
+team  ·
+  Our 
+clients  ·
+  Our 
+Portfolio  ·
+  
+About  ·
+  Get in 
+touch  +
+  "Start a Conversation" button
+Replace
+Property  ·
+  
+Lifestyle  ·
+  
+Portfolio  ·
+  
+About  ·
+  Connect
++ 
+"Start a Conversation" 
+What each nav item covers:
+Property — current "What We Do" section (four service types: design-led renovations, lifestyle properties, fast flips, end-to-end management)
+Lifestyle — current "Our Clients" section (People at a turning point: deceased estates, divorce, downsizers, long-term rental owners)
+Portfolio — current portfolio section, kept as is with the structural changes described in Section 3
+About — current "Our Team" + "Why Shimmeur" + "The Story" sections combined. Natalie's bio is the anchor.
+Connect — current "Get in Touch" form + Shimmy. Also houses the Capital Partners pathway (see Section 10).
+Section 2 — Logo &amp; Header
+[FIX] 
+Remove: 
+"Shimmeur Client 
+Preso
+" appears in the header and footer. Strip "Client 
+Preso
+" everywhere — the wordmark should read "Shimmeur" only.
+Section 3 — Portfolio
+What's working
+The rollover column layout displaying images is excellent — keep this exactly as is. The interaction works well and shows the work effectively.
+Changes required
+[FIX] 
+Fix: 
+All BEFORE images must have a visible "Before" tag/label overlaid. Currently they display without context — visitors cannot tell which is before and which is after.
+[FIX] 
+Fix: 
+When a project story is shown (e.g. robe refresh, kitchen detail), the clickable image columns should appear FIRST, then the written story underneath — not the other way around.
+Consolidate to two hero stories
+Rather than listing every project phase individually, group work into two strong narrative stories:
+Story A — Contemporary Hamptons Repositioning, Baulkham Hills NSW
+Theme: Transformed multigenerational living. 
+Scope encompasses the full 
+structural 
+renovation arc including main bedroom addition with ensuite and walk-in robe, kitchen transformation, 
+new home entry,
+ 
+fourth bedroom conversion, downstairs bathroom, second lounge, stairwell refresh
+, new carport &amp; decking +100sqm
+. 
+*
+This is the flagship project — give it the most space.
+Story B — Coastal Lifestyle Refresh, The Entrance NSW
+Theme: Uplift value, repurposed spaces, fresh look and feel. 
+Scope: 
+reconfigure i
+nternal 
+spaces to create new entry, 
+master suite
+ with new WIR
+,
+ 
+contemporary livings paces combining a new kitchen island,
+ flooring, exterior, landscaping, documented rental uplift. 
+Use the $180/week rental uplift as the headline result.
+Before/After cases
+ – I’m 
+no
+ sure 
+abot
+ this right now – can we leave this and I’ll reassess once I see the new sections
+ remain as a supporting gallery beneath the two hero stories.
+Section 4 — Key Messages
+The site currently carries too many competing ideas across sections. Every piece of copy should ladder up to these three messages. The developer/designer should use these as a filter when reviewing any section:
+The three key messages:
+— 
+Design that unlocks value — most properties sell without reaching their full potential; Shimmeur changes that through considered design, not generic fixes
+— 
+A trusted partner in life's transitions — owners are navigating something significant (a death, a divorce, a downsize) and need someone who handles complexity with care
+— 
+Fuss-free results — end-to-end management means owners stay informed without being burdened
+[KEEP] 
+Keep: 
+Hero headline exactly as written: "Your property deserves more than it's been given." Do not change this.
+"Signature Spaces, Lasting Impressions" — Where It Lives
+This tagline is the brand promise — the Why distilled to its essence. It is currently only in the footer, where most visitors never see it.
+[ADD] 
+Add: 
+Feature as a large typographic pull quote in the About section, positioned directly beneath Natalie's introduction. Keep it in the footer too — it should bookend the experience.
+Section 5 — Content Updates
+5A. "What Shimmeur Looks For" — New Copy
+The current bullet-list version reads as too functional and clinical for this brand. Replace with the following prose. Use bold exactly as marked:
+"The goal isn't to renovate more. It's to make the right changes that bring a property to life.  We look at what makes the home special and the lifestyle it can offer, while also considering how buyers are likely to respond, what the suburb expects, how the property compares with others on the market, and where presentation may be quietly working against its value.  From there, we focus the budget where it matters most, creating a clear hero for the property and a home people can genuinely see themselves li
+ving in.  It's not renovation for renovation's sake. It's about creating the right feeling, for the right market, in the right places."
+Below this, as a standalone statement:
+"Strong property results come from disciplined decisions, careful design and surrounding ourselves with a great team united by a commitment to excellence."
+5B. Natalie Phillips Bio — Updated Copy
+Replace the current About/Team content with the following. Use bold exactly as marked:
+Natalie Phillips Founder · Property Lifestyle Consultant Beauty. Passion. Connection.  Led by someone who's done it before, Natalie brings together a creative eye, commercial thinking and 25+ years of project and change leadership to help people unlock the potential in their property.  She doesn't design the project. She sees what it could become. Natalie shapes the vision, influences the direction, leads the project and brings together the right specialists to make it happen.  Shimmeur is a team effort. Na
+talie works with a trusted tribe of builders, designers, trades and property specialists, bringing the right expertise to each project and making sure everyone is working towards the same outcome.  Having led projects ranging from $60K renovations to a $2.5M resort refurbishment, she brings a strong commercial lens to the decisions that matter: where to invest, where to hold back and how to keep the project moving without losing sight of the bigger picture.  The goal is more than a beautifully presented hom
+e. It's about understanding the lifestyle a property can offer, bringing that to life and creating a home that makes the next owner fall in love with it.  
+See the potential. Create the lifestyle. Unlock the value.
+ (Get in touch with Nat is nice – can we leave it purely as an email rather than phone number
+I  want the message about A multiskilled team is behind every project…. everyone is purpose chosen and are professional licenced people
+ I like your little iconography displayed to simplify the key messages about the team
+5C. "Why Shimmeur" Section — Simplify
+The seven principles currently display as a long bullet list. This is the right thinking expressed in the wrong format. The developer should apply the same visual style used elsewhere on the site (clean columns or card layout) to present three distilled ideas instead of seven:
+— 
+We see what your property could become — before a single trade is booked
+— 
+We manage everything — design, trades, staging — so you don't have to
+— 
+We close the gap between what your property is and what it could sell for
+Use the existing section style (whatever visual treatment "What We Do" uses for its four services) applied to these three ideas. This creates consistency and removes the list-heavy feel.
+Section 6 — Contact Form Updates
+Three specific changes to the existing "Get in Touch" form:
+[FIX] 
+Fix — Location copy: 
+Update to: "Sydney-based, working across the Inner West, Northwest and regional areas. We will travel for the right relationship."
+[FIX] 
+Fix — Property suburb field: 
+Add placeholder prompt text inside the field: e.g. Five Dock, Baulkham Hills, 
+Kilara
+...
+[FIX] 
+Fix — Your Situation dropdown: 
+Add "Capital Partner" as an option in the dropdown list. Full list should read: Deceased estate / Divorce or separation / Downsizing / Long-term rental property / Capital Partner / Referred by someone / Other
+Section 7 — Builder's Licence
+The licence numbers (468960, 478414C, 
+Monistar
+ Building Pty Ltd) are currently displayed prominently in the Team section. Remove them. The target audience is a property owner, not a trade evaluating compliance.
+[FIX] 
+Replace with: 
+One plain sentence in the About section:
+"All works are carried out through our fully licensed and insured entity, with a hand-picked network of tradespeople and professional stylists."
+Section 8 — Shimmy (the Shimmeur Assistant)
+Current state
+The assistant is currently labelled "Shimmeur Assistant" with the subtitle "A quiet first conversation." The opening line and prompts need updating.
+Required changes
+[FIX] 
+Fix — Name: 
+Rename from "Shimmeur Assistant" to "Shimmy"
+[KEEP] 
+Keep — Subtitle: 
+"A quiet first conversation" — keep this exactly
+[FIX] 
+Fix — Opening line: 
+Change to:
+"Hi, I'm Shimmy — every property has a story. What's yours right now?"
+[FIX] 
+Fix — Prompt options: 
+Replace current prompts with:
+— 
+It needs a refresh before I sell
+— 
+A life change means it's time to move
+— 
+I want to maximise value before I list
+— 
+I want to explore a capital partnership
+— 
+I'm just looking for now
+Each prompt should lead to one warm follow-up question, then offer either the 
+ebook
+ download or a direct invitation to connect with Natalie. Two steps maximum. No lengthy forms.
+Section 9 — Images (Priority Fix)
+Images are the most important thing to address on this site.
+ We’ll work on this in the next round properly
+The content presentation is clean and the layout is beautiful. The images are what is currently holding the site back from feeling premium. Until images are replaced, the site will not reflect the quality of the work or the brand.
+What is needed:
+— 
+Natalie's 
+photo:.
+ IMPORTANT — this image requires a professional retouch before going live. Specifically: soften the fine lines and 
+crows
+ feet around the eyes using a healing/smooth tool (Photoshop, Lightroom, or equivalent). Do not over-retouch; the goal is natural, not airbrushed.
+— 
+Portfolio: Where before/after shots exist, use them. Every "before" image must have a visible "Before" label overlaid so visitors understand the transformation context.
+— 
+Section backgrounds and lifestyle images: Replace any placeholder or generic imagery with real project photography wherever possible. 
+Section 10 — Capital Partners
+This is a new section to be added within the Connect page, accessible via a discreet link. It speaks to a different audience (investors) so it should sit below and separate from the main contact form — not in the primary navigation.
+[ADD] 
+Add — Section header: 
+"Partner with Shimmeur" 
+Use the following copy in full. Open with the brand name, not "We":
+Come and play the long game with us.  
+Shimmeur builds
+ relationships with people who see the opportunity in property beyond the next transaction.  From shorter-term projects through to longer-term opportunities, we're open to partnering with people who want to be part of creating something with genuine potential.  Every opportunity is different. Some are about unlocking value through a thoughtful transformation. Others are about holding a great property and allowing its potential to build over time.  We bring the property thinking, project leadership and team.
+ Our partners bring capital, perspective and the appetite to build something together.  We're not looking for a long list of investors. We're looking for the right people to grow with. In many cases, that means working together across more than one opportunity as the relationship develops.  If that sounds like the kind of partnership you'd like to explore, let's have a
+ confidential
+ conversation. 
+CTA for this section: a simple "Get in touch" link 
+that pre-fills
+ the contact form with "Capital Partner" selected in the Your Situation dropdown.
+Section 11 — Stories 
+– Can go into Portfolio
+Add "Stories".
+ I want this to be separated eventually, 
+but 
+ 
+it
+ doesn’t need to
+ be fully built at launch — even a single well-presented piece establishes the space.
+[ADD] 
+Add at launch: 
+The 
+ebook
+ ("Before You List: The Decisions That Actually Move the Price") as the anchor piece. Name + email— no lengthy form.
+This is where the ‘in your words’ can live and the rolling banner
+[ADD] 
+Add over time: 
+Client transformation stories, Natalie's insights, project case studies. This is where Shimmy can direct people at the end of a conversation.
+Section 12 — 
+Ebook
+ / Lead Magnet
+Add a simple 
+ebook
+ capture section between the Hero and the Property section on the homepage. This captures visitors before they've decided to engage.
+[ADD] 
+Add — Section heading: 
+"Before You List: The Decisions That Actually Move the 
+Needle
+"
+[ADD] 
+Add — Subheading: 
+"A complimentary Shimmeur guide — leave your details and we'll send it through."
+[ADD] 
+Add — Form fields: 
+First name + email address only. No further fields. Keep it frictionless.
+I’ll have 
+teo
+ 
+creat
+ this 
+ebook
+ before this section goes live – btu if not…. A "notify me / send me a copy" model works fine at launch — it builds the list while the content is being finalised.
+Shimmeur  ·
+  Signature Spaces, Lasting Impressions
+

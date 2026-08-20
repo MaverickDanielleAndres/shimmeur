@@ -11,18 +11,24 @@ type Msg = {
 const INITIAL_SCRIPT: Msg[] = [
   {
     role: "bot",
-    text:
-      "Hi, I&rsquo;m here to help you start a quiet conversation about your property. What would be most useful?",
+    text: "Hi, I&rsquo;m Shimmy — every property has a story. What&rsquo;s yours right now?",
     time: "",
   },
 ];
 
-const QUICK_PROMPTS = [
-  "I&rsquo;m thinking about selling",
-  "Tell me about the funded partnership",
-  "Do you work outside Sydney?",
-  "How do I get started?",
+const OPENING_PROMPTS = [
+  "It needs a refresh before I sell",
+  "A life change means it&rsquo;s time to move",
+  "I want to maximise value before I list",
+  "I want to explore a capital partnership",
+  "I&rsquo;m just looking for now",
 ];
+
+const INTRO_QUESTION =
+  "Tell me a little about the property — type, suburb, and roughly where things are at. Then I&rsquo;ll point you in the right direction.";
+
+const PARTNERSHIP_RESPONSE =
+  "Capital partnership is one of the ways we work. Send your details via the Connect form and select &lsquo;Capital Partner&rsquo; — Natalie will reply personally. In the meantime, I can keep you company.";
 
 function stamp() {
   return new Date().toLocaleTimeString([], {
@@ -31,35 +37,37 @@ function stamp() {
   });
 }
 
-function botReply(input: string): string {
+function classifyAndReply(input: string): { reply: string; next?: string } {
   const lower = input.toLowerCase();
-  if (lower.includes("sell") || lower.includes("sale")) {
-    return "That&rsquo;s a good place to start. A short conversation with Natalie helps us understand the property and the timing. Would you like to share a suburb and a rough timeline?";
+
+  if (lower.includes("capital") || lower.includes("partner")) {
+    return {
+      reply: PARTNERSHIP_RESPONSE,
+      next: "scroll-to-connect-capital",
+    };
   }
-  if (lower.includes("partner") || lower.includes("funded")) {
-    return "Where the funded partnership model applies, Shimmeur funds the renovation, designs and delivers it, and shares the uplift at settlement. It&rsquo;s not the only way we work — we also do straight project management. Happy to walk you through both.";
+
+  if (lower.includes("just looking") || lower.includes("for now") || lower.includes("browsing")) {
+    return {
+      reply:
+        "No rush. When you&rsquo;re ready, the Shimmeur guide &lsquo;Before You List&rsquo; is a useful starting point — leave your details in the Ebook section above and we&rsquo;ll send it through.",
+    };
   }
-  if (lower.includes("sydney") || lower.includes("where") || lower.includes("area")) {
-    return "Sydney-based, and we travel by relationship for the right project. Tell me where the property is and we can take it from there.";
-  }
-  if (lower.includes("start") || lower.includes("book") || lower.includes("contact")) {
-    return "The easiest first step is an email — natalie@shimmeur.co — or a call on +61 416 254 020. Natalie replies personally, usually within a business day.";
-  }
-  if (lower.includes("divorce") || lower.includes("separation")) {
-    return "We support owners navigating separation with care and clarity. The property is prepared properly, the value is agreed up front, and we handle the work so you don&rsquo;t have to.";
-  }
-  if (lower.includes("estate") || lower.includes("deceased")) {
-    return "Estate properties are handled with care. We take the renovation stress off the family so the home can transition with dignity.";
-  }
-  if (lower.includes("rental") || lower.includes("tenant")) {
-    return "Long-term rentals often need a refresh before sale or re-leasing. Targeted, design-led improvements that respect the property and the income.";
-  }
-  return "Thanks for that — a member of the team will pick this up. If it&rsquo;s easier, you can email natalie@shimmeur.co and we&rsquo;ll respond personally.";
+
+  return {
+    reply: INTRO_QUESTION,
+    next: "follow-up",
+  };
+}
+
+function followUpResponse(): string {
+  return "Thanks for that. The cleanest next step is a quiet conversation with Natalie — leave your details in the Connect form above and select the situation that fits. Or, if you&rsquo;d like the Shimmeur guide first, you can request it from the Ebook section.";
 }
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  const [step, setStep] = useState<0 | 1 | 2>(0);
   const [messages, setMessages] = useState<Msg[]>(INITIAL_SCRIPT);
   const [typing, setTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -92,14 +100,62 @@ export default function ChatWidget() {
     setInput("");
     setTyping(true);
     window.setTimeout(() => {
-      const reply: Msg = {
+      const { reply, next } = classifyAndReply(trimmed);
+      const replyMsg: Msg = {
         role: "bot",
-        text: botReply(trimmed),
+        text: reply,
         time: stamp(),
       };
-      setMessages((m) => [...m, reply]);
+      setMessages((m) => [...m, replyMsg]);
+      setTyping(false);
+
+      if (next === "scroll-to-connect-capital" && typeof window !== "undefined") {
+        window.setTimeout(() => {
+          history.replaceState(null, "", "#connect?situation=capital-partner");
+          const select = document.querySelector("#situation");
+          if (select instanceof HTMLSelectElement) {
+            select.value = "Capital Partner";
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+          const connect = document.querySelector("#connect");
+          if (connect) {
+            const top = connect.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+        }, 400);
+        setStep(2);
+      } else if (next === "follow-up") {
+        setStep(1);
+      } else {
+        setStep(2);
+      }
+    }, 700);
+  };
+
+  const handleFollowUp = () => {
+    setStep(2);
+    const userMsg: Msg = {
+      role: "user",
+      text: "(Tell Shimmy a bit about the property.)",
+      time: stamp(),
+    };
+    setMessages((m) => [...m, userMsg]);
+    setTyping(true);
+    window.setTimeout(() => {
+      const replyMsg: Msg = {
+        role: "bot",
+        text: followUpResponse(),
+        time: stamp(),
+      };
+      setMessages((m) => [...m, replyMsg]);
       setTyping(false);
     }, 700);
+  };
+
+  const reset = () => {
+    setStep(0);
+    setMessages([INITIAL_SCRIPT[0]]);
+    setInput("");
   };
 
   return (
@@ -107,7 +163,7 @@ export default function ChatWidget() {
       {/* Trigger button */}
       <button
         type="button"
-        aria-label={open ? "Close chat" : "Open chat with Shimmeur"}
+        aria-label={open ? "Close Shimmy" : "Open Shimmy"}
         aria-expanded={open}
         aria-controls="shimmeur-chat-panel"
         onClick={() => setOpen((v) => !v)}
@@ -157,7 +213,7 @@ export default function ChatWidget() {
       <div
         id="shimmeur-chat-panel"
         role="dialog"
-        aria-label="Shimmeur chat"
+        aria-label="Shimmy chat"
         aria-hidden={!open}
         className={`fixed z-[55] inset-x-4 bottom-[88px] md:inset-x-auto md:right-8 md:bottom-[100px] md:w-[380px] transition-all duration-300 origin-bottom-right ${
           open
@@ -206,7 +262,7 @@ export default function ChatWidget() {
               </span>
               <div>
                 <p className="font-display text-[0.95rem] leading-tight">
-                  Shimmeur Assistant
+                  Shimmy
                 </p>
                 <p
                   className="text-[0.65rem] tracking-[0.1em] uppercase"
@@ -226,93 +282,125 @@ export default function ChatWidget() {
           >
             <div className="px-5 py-5 space-y-3">
               {messages.map((m, i) => (
-              <div
-                key={i}
-                className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
-              >
                 <div
-                  className="max-w-[85%] rounded-[16px] px-3.5 py-2.5 text-[0.75rem] leading-[1.55] shadow-sm"
-                  style={
-                    m.role === "user"
-                      ? {
-                          background: "var(--shimmeur-navy)",
-                          color: "#FFFFFF",
-                          borderBottomRightRadius: "4px",
-                        }
-                      : {
-                          background: "#FFFFFF",
-                          color: "var(--shimmeur-charcoal)",
-                          border: "1px solid var(--shimmeur-stone)",
-                          borderBottomLeftRadius: "4px",
-                        }
-                  }
+                  key={i}
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <span dangerouslySetInnerHTML={{ __html: m.text }} />
                   <div
-                    className="text-[0.6rem] mt-0.5 tracking-[0.06em] uppercase"
-                    style={{
-                      color:
-                        m.role === "user"
-                          ? "rgba(255,255,255,0.6)"
-                          : "var(--shimmeur-mid)",
-                    }}
+                    className="max-w-[85%] rounded-[16px] px-3.5 py-2.5 text-[0.75rem] leading-[1.55] shadow-sm"
+                    style={
+                      m.role === "user"
+                        ? {
+                            background: "var(--shimmeur-navy)",
+                            color: "#FFFFFF",
+                            borderBottomRightRadius: "4px",
+                          }
+                        : {
+                            background: "#FFFFFF",
+                            color: "var(--shimmeur-charcoal)",
+                            border: "1px solid var(--shimmeur-stone)",
+                            borderBottomLeftRadius: "4px",
+                          }
+                    }
                   >
-                    {m.role === "bot" ? "Shimmeur" : "You"} · {m.time}
-                  </div>
-                </div>
-              </div>
-            ))}
-            {typing && (
-              <div className="flex justify-start">
-                <div
-                  className="rounded-[12px] px-4 py-3 flex items-center gap-1"
-                  style={{
-                    background: "#FFFFFF",
-                    border: "1px solid var(--shimmeur-stone)",
-                    borderBottomLeftRadius: "4px",
-                  }}
-                >
-                  {[0, 1, 2].map((d) => (
-                    <span
-                      key={d}
-                      className="block h-[6px] w-[6px] rounded-full"
+                    <span dangerouslySetInnerHTML={{ __html: m.text }} />
+                    <div
+                      className="text-[0.6rem] mt-0.5 tracking-[0.06em] uppercase"
                       style={{
-                        background: "var(--shimmeur-sage)",
-                        animation: `shimmeur-typing 1s ${d * 0.15}s infinite ease-in-out`,
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {messages.length <= 2 && (
-              <div className="pt-2">
-                <div
-                  className="text-[0.6rem] tracking-[0.14em] uppercase mb-2"
-                  style={{ color: "var(--shimmeur-sage)" }}
-                >
-                  Suggested
-                </div>
-                <div className="flex flex-wrap gap-2.5">
-                  {QUICK_PROMPTS.map((prompt) => (
-                    <button
-                      key={prompt}
-                      type="button"
-                      onClick={() => send(prompt)}
-                      className="text-[0.68rem] px-3 py-1.5 rounded-full transition-all hover:-translate-y-[1px] shadow-sm"
-                      style={{
-                        background: "#FFFFFF",
-                        border: "1px solid var(--shimmeur-stone)",
-                        color: "var(--shimmeur-navy)",
+                        color:
+                          m.role === "user"
+                            ? "rgba(255,255,255,0.6)"
+                            : "var(--shimmeur-mid)",
                       }}
                     >
-                      <span dangerouslySetInnerHTML={{ __html: prompt }} />
-                    </button>
-                  ))}
+                      {m.role === "bot" ? "Shimmy" : "You"} · {m.time}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            )}
+              ))}
+              {typing && (
+                <div className="flex justify-start">
+                  <div
+                    className="rounded-[12px] px-4 py-3 flex items-center gap-1"
+                    style={{
+                      background: "#FFFFFF",
+                      border: "1px solid var(--shimmeur-stone)",
+                      borderBottomLeftRadius: "4px",
+                    }}
+                  >
+                    {[0, 1, 2].map((d) => (
+                      <span
+                        key={d}
+                        className="block h-[6px] w-[6px] rounded-full"
+                        style={{
+                          background: "var(--shimmeur-sage)",
+                          animation: `shimmeur-typing 1s ${d * 0.15}s infinite ease-in-out`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Opening prompts — only on step 0 */}
+              {step === 0 && messages.length <= 1 && (
+                <div className="pt-2">
+                  <div
+                    className="text-[0.6rem] tracking-[0.14em] uppercase mb-2"
+                    style={{ color: "var(--shimmeur-sage)" }}
+                  >
+                    Suggested
+                  </div>
+                  <div className="flex flex-wrap gap-2.5">
+                    {OPENING_PROMPTS.map((prompt) => (
+                      <button
+                        key={prompt}
+                        type="button"
+                        onClick={() => send(prompt)}
+                        className="text-[0.68rem] px-3 py-1.5 rounded-full transition-all hover:-translate-y-[1px] shadow-sm"
+                        style={{
+                          background: "#FFFFFF",
+                          border: "1px solid var(--shimmeur-stone)",
+                          color: "var(--shimmeur-navy)",
+                        }}
+                      >
+                        <span dangerouslySetInnerHTML={{ __html: prompt }} />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Step 1 — follow-up prompt */}
+              {step === 1 && (
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={handleFollowUp}
+                    className="text-[0.68rem] px-3 py-1.5 rounded-full transition-all hover:-translate-y-[1px] shadow-sm"
+                    style={{
+                      background: "var(--shimmeur-navy)",
+                      color: "#FFFFFF",
+                    }}
+                  >
+                    Share a bit about the property
+                  </button>
+                </div>
+              )}
+
+              {/* Step 2 — done; offer reset */}
+              {step === 2 && (
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={reset}
+                    className="text-[0.68rem] tracking-[0.08em] uppercase"
+                    style={{ color: "var(--shimmeur-sage)" }}
+                  >
+                    Start over
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
@@ -337,8 +425,9 @@ export default function ChatWidget() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type a message…"
-                className="w-full text-[0.75rem] py-2 pl-4 pr-12 rounded-full outline-none transition-all focus:ring-2 focus:ring-[var(--shimmeur-sage)]"
+                placeholder={step >= 2 ? "Conversation closed" : "Type a message…"}
+                disabled={step >= 2}
+                className="w-full text-[0.75rem] py-2 pl-4 pr-12 rounded-full outline-none transition-all focus:ring-2 focus:ring-[var(--shimmeur-sage)] disabled:opacity-50"
                 style={{
                   background: "var(--shimmeur-cream)",
                   border: "1px solid var(--shimmeur-stone)",
@@ -348,7 +437,8 @@ export default function ChatWidget() {
               <button
                 type="submit"
                 aria-label="Send message"
-                className="absolute right-1.5 h-[30px] w-[30px] rounded-full flex items-center justify-center transition-transform hover:scale-105"
+                disabled={step >= 2}
+                className="absolute right-1.5 h-[30px] w-[30px] rounded-full flex items-center justify-center transition-transform hover:scale-105 disabled:opacity-50"
                 style={{
                   background: "var(--shimmeur-navy)",
                   color: "#FFFFFF",

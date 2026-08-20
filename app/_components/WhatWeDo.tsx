@@ -8,7 +8,7 @@ const PILLARS = [
   {
     no: "01",
     title: "Design-led renovations",
-    body: "We maximise sale price through considered design — not generic cosmetic fixes.",
+    body: "Considered design that lifts a property's value before it goes to market — never generic cosmetic fixes.",
     img: "/ppt/image12.jpeg",
     imgAlt: "Sculptural garden feature with succulents — a Shimmeur design detail",
     reverse: false,
@@ -16,7 +16,7 @@ const PILLARS = [
   {
     no: "02",
     title: "Lifestyle properties",
-    body: "We specialise in creating emotional connection. Buyers pay a premium for a home they fall in love with.",
+    body: "We design for the way a home is meant to be lived in. Buyers pay a premium for a property they fall in love with.",
     img: "/ppt/image50.png",
     imgAlt: "Bright white kitchen renovation — lifestyle design by Shimmeur",
     reverse: true,
@@ -24,7 +24,7 @@ const PILLARS = [
   {
     no: "03",
     title: "Fast, focused flips",
-    body: "Efficient, high-impact. We know exactly where to invest effort and where to stop.",
+    body: "Disciplined, high-impact. We know exactly where to invest effort and, importantly, where to stop.",
     img: "/ppt/image58.png",
     imgAlt: "Light-filled open-plan dining and living space after renovation",
     reverse: false,
@@ -32,7 +32,7 @@ const PILLARS = [
   {
     no: "04",
     title: "End-to-end management",
-    body: "We step in fully — design, trades, staging — so the owner stays completely hands-free.",
+    body: "We step in fully — vision, trades, staging — so the owner stays completely hands-free.",
     img: "/ppt/image38.png",
     imgAlt: "Renovated home exterior at dusk — complete property transformation by Shimmeur",
     reverse: true,
@@ -74,7 +74,7 @@ export default function WhatWeDo() {
 
   return (
     <section
-      id="what-we-do"
+      id="property"
       className="relative overflow-clip"
       style={{ background: "var(--shimmeur-cream)" }}
     >
@@ -95,7 +95,7 @@ export default function WhatWeDo() {
             className="eyebrow"
             style={{ display: "inline-block", marginBottom: "1.5rem" }}
           >
-            What we do
+            Property
           </span>
 
           <div className="grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-20 items-end">

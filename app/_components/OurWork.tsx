@@ -62,7 +62,7 @@ const DETAILED_PROJECTS = [
       "Internal reconfiguration, kitchen island, master bedroom and walk-in robe refresh, new flooring, exterior upgrade, new front fencing, landscaping and outdoor shower.",
     cover: "/img/project/entrance-streetscape-2.jpg",
     gallery: [
-      "/img/project/entrance-kitchen-1.jpg",
+      "/ppt/image22.JPG",
       "/img/project/entrance-living-2.png",
       "/img/project/entrance-master-2.jpg",
     ],
@@ -247,15 +247,18 @@ export default function OurWork() {
                     {project.gallery.map((img, idx) => (
                       <div
                         key={img}
-                        className="relative aspect-square overflow-hidden rounded-[3px] w-full"
-                        style={{ background: "var(--shimmeur-stone)" }}
+                        className="relative overflow-hidden rounded-[3px] w-full shrink-0"
+                        style={{ 
+                          background: "var(--shimmeur-stone)",
+                          paddingBottom: "133%"
+                        }}
                       >
                         <Image
                           src={img}
                           alt={`${project.title} — detail ${idx + 1}`}
                           fill
                           sizes="(min-width: 1024px) 12vw, 30vw"
-                          className="object-cover"
+                          className="object-cover absolute inset-0"
                         />
                       </div>
                     ))}

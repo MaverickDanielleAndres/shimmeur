@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type FormState = {
   firstName: string;
@@ -28,6 +28,7 @@ const SITUATIONS = [
   { value: "Divorce or separation", label: "Divorce or separation" },
   { value: "Downsizing", label: "Downsizing" },
   { value: "Long-term rental property", label: "Long-term rental property" },
+  { value: "Capital Partner", label: "Capital Partner" },
   { value: "Referred by someone", label: "Referred by someone" },
   { value: "Other", label: "Other" },
 ];
@@ -35,6 +36,15 @@ const SITUATIONS = [
 export default function ContactForm() {
   const [data, setData] = useState<FormState>(INITIAL);
   const [touched, setTouched] = useState(false);
+
+  // Allow programmatic pre-selection via URL hash, e.g. #situation=capital-partner
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash;
+    if (hash.includes("situation=capital-partner")) {
+      setData((d) => ({ ...d, situation: "Capital Partner" }));
+    }
+  }, []);
 
   const update =
     <K extends keyof FormState>(field: K) =>
@@ -125,7 +135,7 @@ export default function ContactForm() {
           id="suburb"
           value={data.suburb}
           onChange={update("suburb")}
-          placeholder="e.g. Balmain, Chatswood…"
+          placeholder="e.g. Five Dock, Baulkham Hills, Kilara…"
         />
       </div>
       <div className="mt-5">
@@ -191,7 +201,7 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="btn btn-navy w-full mt-3"
+        className="btn btn-navy w-full mt-6"
       >
         Send enquiry
       </button>
@@ -199,8 +209,8 @@ export default function ContactForm() {
         className="text-[0.78rem] leading-[1.65] mt-4"
         style={{ color: "var(--shimmeur-mid)" }}
       >
-        We&rsquo;re Sydney-based and work across Australia by referral and
-        relationship. Every enquiry is treated with full confidentiality.
+        Every enquiry is treated with full confidentiality. We reply
+        personally, usually within a business day.
       </p>
     </form>
   );

@@ -91,25 +91,25 @@ export default function Hero() {
             className="font-display font-medium leading-[1.04] mb-5 md:mb-6"
             style={{
               color: "#FFFFFF",
-              fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+              fontSize: "clamp(2.2rem, 5vw, 4.5rem)",
             }}
           >
             <span
               ref={(el) => { linesRef.current[1] = el; }}
-              className="block hero-line"
+              className="block hero-line whitespace-nowrap"
             >
               Your property
             </span>
             <span
               ref={(el) => { linesRef.current[2] = el; }}
-              className="block hero-line"
+              className="block hero-line whitespace-nowrap"
               style={{ transitionDelay: "80ms" }}
             >
               deserves more than
             </span>
             <span
               ref={(el) => { linesRef.current[3] = el; }}
-              className="block hero-line italic"
+              className="block hero-line italic whitespace-nowrap"
               style={{ transitionDelay: "160ms", color: "var(--shimmeur-sage-light)" }}
             >
               it&rsquo;s been given.
@@ -133,10 +133,10 @@ export default function Hero() {
             className="hero-line flex flex-wrap items-center gap-4"
             style={{ transitionDelay: "320ms" }}
           >
-            <a href="#what-we-do" className="btn btn-primary">
+            <a href="#property" className="btn btn-primary">
               See how it works
             </a>
-            <a href="#contact" className="btn btn-ghost-light">
+            <a href="#connect" className="btn btn-ghost-light">
               Get in touch
             </a>
           </div>
@@ -205,7 +205,7 @@ export default function Hero() {
 
       {/* Scroll affordance */}
       <a
-        href="#why-shimmeur"
+        href="#ebook"
         className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 text-[0.62rem] tracking-[0.22em] uppercase z-10 scroll-cue"
         style={{ color: "rgba(255, 255, 255, 0.5)" }}
         aria-label="Scroll to content"

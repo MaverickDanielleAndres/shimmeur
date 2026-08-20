@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+
 const NAV_LINKS = [
-  { href: "#what-we-do", label: "What we do" },
-  { href: "#why-shimmeur", label: "Why Shimmeur" },
-  { href: "#our-team", label: "Our team" },
-  { href: "#who-we-help", label: "Our clients" },
-  { href: "#our-portfolio", label: "Our Portfolio" },
-  { href: "#the-story", label: "About" },
-  { href: "#contact", label: "Get in touch" },
+  { href: "#property", label: "Property" },
+  { href: "#lifestyle", label: "Lifestyle" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#about", label: "About" },
+  { href: "#connect", label: "Connect" },
 ];
 
 export default function Nav() {
@@ -63,22 +62,19 @@ export default function Nav() {
         >
           {/* Mobile Logo */}
           <div className="md:hidden relative w-8 h-10 flex items-center justify-center">
-            <Image 
-              src="/logonobg.png" 
-              alt="Shimmeur" 
+            <Image
+              src="/logonobg.png"
+              alt="Shimmeur"
               fill
               className="object-contain"
               priority
             />
           </div>
 
-          {/* Desktop Logo */}
-          <div className="hidden md:flex flex-col">
-            <span className="font-display font-medium text-[1.2rem] xl:text-[1.5rem] uppercase tracking-[0.05em] leading-none mb-[2px]">
+          {/* Desktop Wordmark */}
+          <div className="hidden md:flex items-center">
+            <span className="font-display font-medium text-[1.2rem] xl:text-[1.5rem] uppercase tracking-[0.05em] leading-none">
               Shimmeur
-            </span>
-            <span className="text-[0.45rem] xl:text-[0.55rem] font-medium tracking-[0.2em] uppercase opacity-90 leading-none whitespace-nowrap">
-              Client Preso
             </span>
           </div>
         </a>
@@ -104,8 +100,8 @@ export default function Nav() {
 
         <div className="hidden lg:flex items-center">
           <a
-            href="#contact"
-            onClick={(e) => handleAnchorClick(e, "#contact")}
+            href="#connect"
+            onClick={(e) => handleAnchorClick(e, "#connect")}
             className={`btn text-[0.6rem] xl:text-[0.65rem] tracking-[0.1em] py-2 px-4 xl:py-3 xl:px-5 ${
               scrolled ? "btn-navy" : "btn-primary"
             }`}
@@ -185,8 +181,8 @@ export default function Nav() {
             ))}
           </ul>
           <a
-            href="#contact"
-            onClick={(e) => handleAnchorClick(e, "#contact")}
+            href="#connect"
+            onClick={(e) => handleAnchorClick(e, "#connect")}
             className="btn btn-navy mt-6 w-full"
           >
             Start a Conversation

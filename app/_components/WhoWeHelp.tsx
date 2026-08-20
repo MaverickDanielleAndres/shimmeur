@@ -84,11 +84,10 @@ const ICONS = [
 export default function WhoWeHelp() {
   return (
     <section
-      id="who-we-help"
+      id="lifestyle"
       className="section-pad relative overflow-hidden"
       style={{ background: "var(--shimmeur-white)", paddingBottom: "40px" }}
     >
-      
       {/* Decorative S-mark Watermark */}
       <div
         aria-hidden="true"
@@ -103,23 +102,32 @@ export default function WhoWeHelp() {
       </div>
 
       <div className="shimmeur-container relative z-10">
-        <FadeIn className="max-w-[680px] mb-16">
-          <span className="eyebrow">Our clients</span>
-          <h2
-            className="font-display font-medium text-[2.2rem] md:text-[2.7rem] lg:text-[3rem] leading-[1.1] mb-6"
-            style={{ color: "var(--shimmeur-navy)" }}
-          >
-            People at a turning point.
-          </h2>
-          <p
-            className="text-[1.05rem] leading-[1.85] max-w-[600px] mb-0"
-            style={{ color: "var(--shimmeur-mid)" }}
-          >
-            Shimmeur works best when the timing feels complex — when life is
-            moving and a property deserves a thoughtful, capable hand to guide
-            it to its best outcome.
-          </p>
-        </FadeIn>
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-20 items-end mb-16 lg:mb-20">
+          <FadeIn>
+            <span className="eyebrow">Lifestyle</span>
+            <h2
+              className="font-display font-medium text-[2.2rem] md:text-[2.7rem] lg:text-[3rem] leading-[1.08] mb-0"
+              style={{ color: "var(--shimmeur-navy)" }}
+            >
+              A trusted partner
+              <br />
+              <span className="italic" style={{ color: "var(--shimmeur-sage)" }}>
+                in life&rsquo;s transitions.
+              </span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={1}>
+            <p
+              className="text-[1.05rem] leading-[1.85] max-w-[540px]"
+              style={{ color: "var(--shimmeur-mid)" }}
+            >
+              Most of the properties we touch arrive at a moment of change — a
+              death, a separation, a downsizing, a long chapter closing. We
+              understand the weight of that, and we hold the property work
+              with the care it deserves.
+            </p>
+          </FadeIn>
+        </div>
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
           {SITUATIONS.map((sit, i) => (
