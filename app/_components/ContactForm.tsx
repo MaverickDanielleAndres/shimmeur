@@ -37,13 +37,24 @@ export default function ContactForm() {
   const [data, setData] = useState<FormState>(INITIAL);
   const [touched, setTouched] = useState(false);
 
-  // Allow programmatic pre-selection via URL hash, e.g. #situation=capital-partner
+  // Allow programmatic pre-selection via URL hash or custom event
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    const handlePreselect = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      setData((d) => ({ ...d, situation: customEvent.detail }));
+    };
+    window.addEventListener("shimmeur-preselect", handlePreselect);
+
     const hash = window.location.hash;
     if (hash.includes("situation=capital-partner")) {
       setData((d) => ({ ...d, situation: "Capital Partner" }));
     }
+
+    return () => {
+      window.removeEventListener("shimmeur-preselect", handlePreselect);
+    };
   }, []);
 
   const update =

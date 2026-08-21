@@ -112,11 +112,9 @@ export default function ChatWidget() {
       if (next === "scroll-to-connect-capital" && typeof window !== "undefined") {
         window.setTimeout(() => {
           history.replaceState(null, "", "#connect?situation=capital-partner");
-          const select = document.querySelector("#situation");
-          if (select instanceof HTMLSelectElement) {
-            select.value = "Capital Partner";
-            select.dispatchEvent(new Event("change", { bubbles: true }));
-          }
+          window.dispatchEvent(
+            new CustomEvent("shimmeur-preselect", { detail: "Capital Partner" })
+          );
           const connect = document.querySelector("#connect");
           if (connect) {
             const top = connect.getBoundingClientRect().top + window.scrollY - 80;

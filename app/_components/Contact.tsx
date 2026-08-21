@@ -9,11 +9,9 @@ export default function Contact() {
     if (typeof window === "undefined") return;
     // Update hash so the form pre-selects the Capital Partner option
     history.replaceState(null, "", "#connect?situation=capital-partner");
-    const target = document.querySelector("#situation");
-    if (target instanceof HTMLSelectElement) {
-      target.value = "Capital Partner";
-      target.dispatchEvent(new Event("change", { bubbles: true }));
-    }
+    window.dispatchEvent(
+      new CustomEvent("shimmeur-preselect", { detail: "Capital Partner" })
+    );
     const connect = document.querySelector("#connect");
     if (connect) {
       const top = connect.getBoundingClientRect().top + window.scrollY - 80;
