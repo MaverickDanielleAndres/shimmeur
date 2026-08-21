@@ -78,7 +78,7 @@ export default function WhyShimmeur() {
               }}
             >
               Three convictions <br />
-              <span className="whitespace-nowrap">that shape every project.</span>
+              <span>that shape every project.</span>
             </h2>
             <p
               className="text-[1.05rem] leading-[1.85] max-w-[480px] mb-10"

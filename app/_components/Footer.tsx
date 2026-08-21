@@ -118,12 +118,22 @@ export default function Footer() {
               >
                 Principles
               </div>
-              <p
-                className="font-display italic text-[0.95rem] leading-[1.7]"
+              {/* Mobile: Vertical */}
+              <div
+                className="font-display italic text-[0.95rem] leading-[1.7] flex flex-col lg:hidden"
+                style={{ color: "var(--shimmeur-sage-light)" }}
+              >
+                <span>Beauty</span>
+                <span>Passion</span>
+                <span>Connection</span>
+              </div>
+              {/* Desktop: Horizontal */}
+              <div
+                className="font-display italic text-[0.95rem] leading-[1.7] hidden lg:block"
                 style={{ color: "var(--shimmeur-sage-light)" }}
               >
                 Beauty&nbsp;&nbsp;·&nbsp;&nbsp;Passion&nbsp;&nbsp;·&nbsp;&nbsp;Connection
-              </p>
+              </div>
             </div>
 
             <div>

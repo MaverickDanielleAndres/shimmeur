@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-AU">
+    <html lang="en-AU" className="overflow-x-hidden">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
         />
       </head>
-      <body className="bg-shimmeur-cream text-shimmeur-charcoal antialiased">
+      <body className="bg-shimmeur-cream text-shimmeur-charcoal antialiased overflow-x-hidden">
         {children}
       </body>
     </html>

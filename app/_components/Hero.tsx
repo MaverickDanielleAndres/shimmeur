@@ -96,20 +96,20 @@ export default function Hero() {
           >
             <span
               ref={(el) => { linesRef.current[1] = el; }}
-              className="block hero-line whitespace-nowrap"
+              className="block hero-line"
             >
               Your property
             </span>
             <span
               ref={(el) => { linesRef.current[2] = el; }}
-              className="block hero-line whitespace-nowrap"
+              className="block hero-line"
               style={{ transitionDelay: "80ms" }}
             >
               deserves more than
             </span>
             <span
               ref={(el) => { linesRef.current[3] = el; }}
-              className="block hero-line italic whitespace-nowrap"
+              className="block hero-line italic"
               style={{ transitionDelay: "160ms", color: "var(--shimmeur-sage-light)" }}
             >
               it&rsquo;s been given.

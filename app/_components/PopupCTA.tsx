@@ -46,6 +46,7 @@ export default function PopupCTA() {
             src="/img/pete.png"
             alt="Pete"
             fill
+            sizes="64px"
             className="object-cover"
           />
         </div>

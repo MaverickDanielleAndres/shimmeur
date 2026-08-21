@@ -66,6 +66,7 @@ export default function Nav() {
               src="/logonobg.png"
               alt="Shimmeur"
               fill
+              sizes="32px"
               className="object-contain"
               priority
             />

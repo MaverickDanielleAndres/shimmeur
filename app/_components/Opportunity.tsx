@@ -99,7 +99,7 @@ export default function Opportunity() {
               }}
             >
               We understand what<br />
-              <span className="whitespace-nowrap">our clients need.</span>
+              <span className="inline-block">our clients need.</span>
             </h2>
             <p
               className="text-[1.05rem] leading-[1.85] max-w-[480px] mb-10"

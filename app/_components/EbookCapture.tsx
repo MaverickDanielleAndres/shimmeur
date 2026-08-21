@@ -35,7 +35,7 @@ export default function EbookCapture() {
 
       <div className="shimmeur-container relative z-10">
         <FadeIn className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
-          <div>
+          <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
             <h2
               className="font-display font-medium text-[2rem] md:text-[2.6rem] leading-[1.1] mb-5"
               style={{ color: "#FFFFFF" }}
