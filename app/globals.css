@@ -119,18 +119,18 @@ h5 {
    SECTION RHYTHM
 ============================================================ */
 .section-pad {
-  padding-block: 72px;
+  padding-block: 48px;
 }
 
 @media (min-width: 768px) {
   .section-pad {
-    padding-block: 96px;
+    padding-block: 64px;
   }
 }
 
 @media (min-width: 1024px) {
   .section-pad {
-    padding-block: 120px;
+    padding-block: 80px;
   }
 }
 

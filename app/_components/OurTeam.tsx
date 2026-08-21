@@ -105,22 +105,12 @@ export default function OurTeam() {
             ))}
           </ul>
 
-          <div
-            className="rounded-[6px] px-5 py-5"
-            style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
+          <p
+            className="text-[0.9rem] leading-[1.75]"
+            style={{ color: "#fff" }}
           >
-            <p
-              className="font-display italic text-[1.05rem] leading-[1.7]"
-              style={{ color: "rgba(255,255,255,0.85)" }}
-            >
-              All works are carried out through our fully licensed and insured
-              entity, with a hand-picked network of tradespeople and
-              professional stylists.
-            </p>
-          </div>
+            All works are carried out through our fully licensed and insured entity, with a hand-picked network of tradespeople and professional stylists.
+          </p>
         </FadeIn>
       </div>
     </section>

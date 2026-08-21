@@ -264,6 +264,39 @@ export default function Stories() {
           ))}
         </div>
       </div>
+
+      {/* Signature Spaces - placed below moving text per request */}
+      <div className="shimmeur-container py-24 lg:py-32 text-center">
+        <FadeIn variant="reveal" as="div">
+          <p
+            className="font-display italic leading-[1.12] mb-6"
+            style={{
+              color: "var(--shimmeur-sage)",
+              fontSize: "clamp(2rem, 6vw, 4.5rem)",
+            }}
+          >
+            Signature Spaces,
+            <br />
+            <span style={{ color: "var(--shimmeur-navy)" }}>Lasting Impressions.</span>
+          </p>
+          <div
+            aria-hidden="true"
+            className="mx-auto mb-6"
+            style={{
+              width: "60px",
+              height: "1px",
+              background: "var(--shimmeur-sage)",
+              opacity: 0.5,
+            }}
+          />
+          <p
+            className="font-display italic text-[1.05rem] md:text-[1.2rem] leading-[1.55]"
+            style={{ color: "var(--shimmeur-mid)" }}
+          >
+            See the potential. Create the lifestyle. Unlock the value.
+          </p>
+        </FadeIn>
+      </div>
     </section>
   );
 }

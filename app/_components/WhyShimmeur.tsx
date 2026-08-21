@@ -14,7 +14,7 @@ const PILLARS = [
   {
     no: "02",
     title: "We manage everything — design, trades, staging — so you don't have to.",
-    body: "We hold the entire project together. Design, approvals, trades, styling, and the unforseen moments in between. Owners stay informed and removed from the noise — the project stress stays with us.",
+    body: "We hold the entire project together. Design, approvals, trades, styling, and the unforeseen moments in between. Owners stay informed and removed from the noise — the project stress stays with us.",
     detail: "Fuss-free, end-to-end.",
   },
   {
